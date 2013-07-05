@@ -145,7 +145,7 @@ get some debugging information using the Valgrind tool:
 | $HOME/root/bin/ecell3-session -f modelFileName.eml
 
 
-|image12|
+.. image:: https://raw.github.com/ecell/spatiocyte-docs/master/images/image12.png
 
  
 
@@ -236,7 +236,7 @@ Figure 2: E-Cell Model (EM) description file for the MinDE model. The
 file is available in the Spatiocyte source package as
 2010.arjunan.syst.synth.biol.wt.em.
 
-|image13|
+.. image:: https://raw.github.com/ecell/spatiocyte-docs/master/images/image13.png
 
  
 
