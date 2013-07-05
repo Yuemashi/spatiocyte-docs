@@ -13,33 +13,21 @@ system.
 On a freshly installed Ubuntu Linux, E-Cell System version 3 and
 Spatiocyte require several additional packages:
 
-$ sudo apt-get install automake libtool g++ libgsl0-dev python-numpy
-python-ply libboost-python-dev libgtkmm-2.4-dev
-libgtkglextmm-x11-1.2-dev libhdf5-serial-dev git valgrind
+    $ sudo apt-get install automake libtool g++ libgsl0-dev python-numpy python-ply libboost-python-dev libgtkmm-2.4-dev libgtkglextmm-x11-1.2-dev libhdf5-serial-dev git valgrind
 
 The general installation procedure of the E-Cell System version 3 is as
 follows:
 
-$ cd
-
-$ mkdir wrk
-
-$ cd wrk
-
-$ git clone https://github.com/ecell/ecell3.git
-
-$ cd ecell3
-
-$ ./autogen.sh
-
-$ ./configure --prefix=$HOME/root
-
-$ make -j3 (or just make, if there is only one CPU core available)
-
-$ make install (files will be installed in the $HOME/root directory)
-
-$ gedit ~/.bashrc (other editors such as emacs or vim can also be used
-here)
+    $ cd
+    $ mkdir wrk
+    $ cd wrk
+    $ git clone https://github.com/ecell/ecell3.git
+    $ cd ecell3
+    $ ./autogen.sh
+    $ ./configure --prefix=$HOME/root
+    $ make -j3 (or just make, if there is only one CPU core available)
+    $ make install (files will be installed in the $HOME/root directory)
+    $ gedit ~/.bashrc (other editors such as emacs or vim can also be used here)
 
 The following lines, which specify the environment variables of the
 E-Cell System should be appended to the .bashrc file:
