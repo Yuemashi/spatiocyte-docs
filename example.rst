@@ -14,7 +14,6 @@ membrane. We know that the model consists of the following reactions,
 
 ::
 
-
   A + A → Ac + Ac
   A + Ac → Ac + Ac
   Ac → A
@@ -29,15 +28,15 @@ molecules, as shown in Figure 13.
 
 ::
 
-  1 message('\\nrunning: ' + FileName)
-  2 theSimulator.createStepper('SpatiocyteStepper', 'SS').VoxelRadius = 0.5
-  3 # Create the system compartment:
-  4 theSimulator.rootSystem.StepperID = 'SS'
-  5 theSimulator.createEntity('Variable', 'Variable:/:LENGTHX').Value = 250
-  6 theSimulator.createEntity('Variable', 'Variable:/:LENGTHY').Value = 250
-  7 theSimulator.createEntity('Variable', 'Variable:/:LENGTHZ').Value = 20
-  8 theSimulator.createEntity('Variable', 'Variable:/:VACANT')
-  9 theSimulator.createEntity('Variable', 'Variable:/:XYPLANE').Value = 3
+  01 message('\\nrunning: ' + FileName)
+  02 theSimulator.createStepper('SpatiocyteStepper', 'SS').VoxelRadius = 0.5
+  03 # Create the system compartment:
+  04 theSimulator.rootSystem.StepperID = 'SS'
+  05 theSimulator.createEntity('Variable', 'Variable:/:LENGTHX').Value = 250
+  06 theSimulator.createEntity('Variable', 'Variable:/:LENGTHY').Value = 250
+  07 theSimulator.createEntity('Variable', 'Variable:/:LENGTHZ').Value = 20
+  08 theSimulator.createEntity('Variable', 'Variable:/:VACANT')
+  09 theSimulator.createEntity('Variable', 'Variable:/:XYPLANE').Value = 3
   10 theSimulator.createEntity('Variable', 'Variable:/:YZPLANE').Value = 5
   11 theSimulator.createEntity('Variable', 'Variable:/:XZPLANE').Value = 5
   12 logger = theSimulator.createEntity('VisualizationLogProcess', 'Process:/:logger')
@@ -94,15 +93,15 @@ that loads all the visualization log files within a directory.
 
 ::
 
-  1 import os
-  2 p1 = [2.2e-6]
-  3 p2 = [0.1, 0.2, 0.3]
-  4 k = [2.5e-3]
-  5 FileName = ''
-  6 for x in p1:
-  7   for y in p2:
-  8     for z in k:
-  9       os.system('ecell3-session --parameters=\\"{\\'FileName\\':\\'' + FileName + \\
+  01 import os
+  02 p1 = [2.2e-6]
+  03 p2 = [0.1, 0.2, 0.3]
+  04 k = [2.5e-3]
+  05 FileName = ''
+  06 for x in p1:
+  07   for y in p2:
+  08     for z in k:
+  09       os.system('ecell3-session --parameters=\\"{\\'FileName\\':\\'' + FileName + \\
   10           str(x) + '\_' + str(y) + '\_' + str(z) + '\_visualLog0.dat\\',\\'p1\\':' + \\
   11           str(x) + ',\\'p2\\':' + str(y) + ',\\'k\\':' + str(z) +'}\\" \\
   12           2012.arjunan.chapter.cluster.py')
@@ -113,12 +112,12 @@ source package as 2012.arjunan.chapter.parameter.py.
 
 ::
 
-  1 import glob
-  2 import os
-  3 files = glob.glob('\*0.dat')
-  4 for i in files:
-  5   print "\\nloading file " + i + "..."
-  6   os.system('spatiocyte ' + i)
+  01 import glob
+  02 import os
+  03 files = glob.glob('\*0.dat')
+  04 for i in files:
+  05   print "\\nloading file " + i + "..."
+  06   os.system('spatiocyte ' + i)
   
 
 Figure 15: A Python script to sequentially load multiple visualization

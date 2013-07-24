@@ -36,339 +36,147 @@ definitions can be seen in Figures 2 (lines 4-7 and 33-34), 5 (lines
 5-8, 17-24, 31-32, 41-49 and 52-54) and 6 (lines 46-49, 59-60, 63-69 and
 71-72).
 
- 
+::
 
- 1 # Example of python scripting to create a neuron with 5 minor
-processes
-
- 2 theSimulator.createStepper('SpatiocyteStepper', 'SS').VoxelRadius =
-10e-8
-
- 3 # Create the root container compartment using the default Cuboid
-geometry:
-
- 4 theSimulator.rootSystem.StepperID = 'SS'
-
- 5 theSimulator.createEntity('Variable', 'Variable:/:LENGTHX').Value =
-61e-6
-
- 6 theSimulator.createEntity('Variable', 'Variable:/:LENGTHY').Value =
-25e-6
-
- 7 theSimulator.createEntity('Variable', 'Variable:/:LENGTHZ').Value =
-5.5e-6
-
- 8 theSimulator.createEntity('Variable', 'Variable:/:VACANT')
-
- 9 logger = theSimulator.createEntity('VisualizationLogProcess',
-'Process:/:logger')
-
-10 logger.LogInterval = 1
-
-11 logger.VariableReferenceList = [['\_',
-'Variable:/Soma/Membrane:VACANT'], ['\_', 'Variable:/Soma:K']]
-
-12 logger.VariableReferenceList = [['\_',
-'Variable:/Dendrite%d/Membrane:VACANT' %i] for i in range(5)]
-
-13 populator = theSimulator.createEntity('MoleculePopulateProcess',
-'Process:/:populate')
-
-14 populator.VariableReferenceList = [['\_', 'Variable:/Soma:K']]
-
-15 # Create the Soma compartment of the Neuron:
-
-16 theSimulator.createEntity('System', 'System:/:Soma').StepperID = 'SS'
-
-17 theSimulator.createEntity('Variable',
-'Variable:/Soma:GEOMETRY').Value = 1
-
-18 theSimulator.createEntity('Variable', 'Variable:/Soma:LENGTHX').Value
-= 10e-6
-
-19 theSimulator.createEntity('Variable', 'Variable:/Soma:LENGTHY').Value
-= 10e-6
-
-20 theSimulator.createEntity('Variable', 'Variable:/Soma:LENGTHZ').Value
-= 6.5e-6
-
-21 theSimulator.createEntity('Variable', 'Variable:/Soma:ORIGINX').Value
-= -0.48
-
-22 theSimulator.createEntity('Variable', 'Variable:/Soma:ORIGINY').Value
-= -0.2
-
-23 theSimulator.createEntity('Variable', 'Variable:/Soma:ORIGINZ').Value
-= -0.6
-
-24 theSimulator.createEntity('Variable', 'Variable:/Soma:VACANT')
-
-25 theSimulator.createEntity('Variable', 'Variable:/Soma:K').Value =
-1000
-
-26 diffuser = theSimulator.createEntity('DiffusionProcess',
-'Process:/Soma:diffuseK')
-
-27 diffuser.VariableReferenceList = [['\_', 'Variable:.:K']]
-
-28 diffuser.D = 0.2e-12
-
-29 # Create the Soma membrane:
-
-30 theSimulator.createEntity('System',
-'System:/Soma:Membrane').StepperID = 'SS'
-
-31 theSimulator.createEntity('Variable',
-'Variable:/Soma/Membrane:DIMENSION').Value = 2
-
-32 theSimulator.createEntity('Variable',
-'Variable:/Soma/Membrane:VACANT')
-
-33 # Parameters of Dendrites/Minor Processes:
-
-34 dendritesLengthX = [40e-6, 10e-6, 10e-6, 10e-6, 10e-6]
-
-35 dendritesOriginX = [0.32, -0.78, -0.48, -0.3, -0.66]
-
-36 dendritesOriginY = [-0.2, -0.2, 0.52, -0.65, -0.65]
-
-37 dendritesRotateZ = [0, 0, 1.57, 0.78, -0.78]
-
-38 for i in range(5):
-
-39   # Create the Dendrite:
-
-40   theSimulator.createEntity('System', 'System:/:Dendrite%d'
-%i).StepperID = 'SS'
-
-41   theSimulator.createEntity('Variable',
-'Variable:/Dendrite%d:GEOMETRY' %i).Value = 3
-
-42   theSimulator.createEntity('Variable',
-'Variable:/Dendrite%d:LENGTHX' %i).Value = dendritesLengthX[i]
-
-43   theSimulator.createEntity('Variable',
-'Variable:/Dendrite%d:LENGTHY' %i).Value = 1.5e-6
-
-44   theSimulator.createEntity('Variable',
-'Variable:/Dendrite%d:ORIGINX' %i).Value = dendritesOriginX[i]
-
-45   theSimulator.createEntity('Variable',
-'Variable:/Dendrite%d:ORIGINY' %i).Value = dendritesOriginY[i]
-
-46   theSimulator.createEntity('Variable',
-'Variable:/Dendrite%d:ORIGINZ' %i).Value = -0.6
-
-47   theSimulator.createEntity('Variable',
-'Variable:/Dendrite%d:ROTATEZ' %i).Value = dendritesRotateZ[i]
-
-48   theSimulator.createEntity('Variable', 'Variable:/Dendrite%d:VACANT'
-%i)
-
-49   theSimulator.createEntity('Variable',
-'Variable:/Dendrite%d:DIFFUSIVE' %i).Name = '/:Soma'
-
-50   # Create the Dendrite membrane:
-
-51   theSimulator.createEntity('System', 'System:/Dendrite%d:Membrane'
-%i).StepperID = 'SS'
-
-52   theSimulator.createEntity('Variable',
-'Variable:/Dendrite%d/Membrane:DIMENSION' %i).Value = 2
-
-53   theSimulator.createEntity('Variable',
-'Variable:/Dendrite%d/Membrane:VACANT' %i)
-
-54   theSimulator.createEntity('Variable',
-'Variable:/Dendrite%d/Membrane:DIFFUSIVE' %i).Name = '/Soma:Membrane'
-
-55 run(100)
-
+  01 # Example of python scripting to create a neuron with 5 minor processes
+  02 theSimulator.createStepper('SpatiocyteStepper', 'SS').VoxelRadius = 10e-8
+  03 # Create the root container compartment using the default Cuboid geometry:
+  04 theSimulator.rootSystem.StepperID = 'SS'
+  05 theSimulator.createEntity('Variable', 'Variable:/:LENGTHX').Value = 61e-6
+  06 theSimulator.createEntity('Variable', 'Variable:/:LENGTHY').Value = 25e-6
+  07 theSimulator.createEntity('Variable', 'Variable:/:LENGTHZ').Value = 5.5e-6
+  08 theSimulator.createEntity('Variable', 'Variable:/:VACANT')
+  09 logger = theSimulator.createEntity('VisualizationLogProcess', 'Process:/:logger')
+  10 logger.LogInterval = 1
+  11 logger.VariableReferenceList = [['\_', 'Variable:/Soma/Membrane:VACANT'], ['\_', 'Variable:/Soma:K']]
+  12 logger.VariableReferenceList = [['\_', 'Variable:/Dendrite%d/Membrane:VACANT' %i] for i in range(5)]
+  13 populator = theSimulator.createEntity('MoleculePopulateProcess', 'Process:/:populate')
+  14 populator.VariableReferenceList = [['\_', 'Variable:/Soma:K']]
+  15 # Create the Soma compartment of the Neuron:
+  16 theSimulator.createEntity('System', 'System:/:Soma').StepperID = 'SS'
+  17 theSimulator.createEntity('Variable', 'Variable:/Soma:GEOMETRY').Value = 1
+  18 theSimulator.createEntity('Variable', 'Variable:/Soma:LENGTHX').Value = 10e-6
+  19 theSimulator.createEntity('Variable', 'Variable:/Soma:LENGTHY').Value = 10e-6
+  20 theSimulator.createEntity('Variable', 'Variable:/Soma:LENGTHZ').Value = 6.5e-6
+  21 theSimulator.createEntity('Variable', 'Variable:/Soma:ORIGINX').Value = -0.48
+  22 theSimulator.createEntity('Variable', 'Variable:/Soma:ORIGINY').Value = -0.2
+  23 theSimulator.createEntity('Variable', 'Variable:/Soma:ORIGINZ').Value = -0.6
+  24 theSimulator.createEntity('Variable', 'Variable:/Soma:VACANT')
+  25 theSimulator.createEntity('Variable', 'Variable:/Soma:K').Value = 1000
+  26 diffuser = theSimulator.createEntity('DiffusionProcess', 'Process:/Soma:diffuseK')
+  27 diffuser.VariableReferenceList = [['\_', 'Variable:.:K']]
+  28 diffuser.D = 0.2e-12
+  29 # Create the Soma membrane:
+  30 theSimulator.createEntity('System', 'System:/Soma:Membrane').StepperID = 'SS'
+  31 theSimulator.createEntity('Variable', 'Variable:/Soma/Membrane:DIMENSION').Value = 2
+  32 theSimulator.createEntity('Variable', 'Variable:/Soma/Membrane:VACANT')
+  33 # Parameters of Dendrites/Minor Processes:
+  34 dendritesLengthX = [40e-6, 10e-6, 10e-6, 10e-6, 10e-6]
+  35 dendritesOriginX = [0.32, -0.78, -0.48, -0.3, -0.66]
+  36 dendritesOriginY = [-0.2, -0.2, 0.52, -0.65, -0.65]
+  37 dendritesRotateZ = [0, 0, 1.57, 0.78, -0.78]
+  38 for i in range(5):
+  39   # Create the Dendrite:
+  40   theSimulator.createEntity('System', 'System:/:Dendrite%d' %i).StepperID = 'SS'
+  41   theSimulator.createEntity('Variable', 'Variable:/Dendrite%d:GEOMETRY' %i).Value = 3
+  42   theSimulator.createEntity('Variable', 'Variable:/Dendrite%d:LENGTHX' %i).Value = dendritesLengthX[i]
+  43   theSimulator.createEntity('Variable', 'Variable:/Dendrite%d:LENGTHY' %i).Value = 1.5e-6
+  44   theSimulator.createEntity('Variable', 'Variable:/Dendrite%d:ORIGINX' %i).Value = dendritesOriginX[i]
+  45   theSimulator.createEntity('Variable', 'Variable:/Dendrite%d:ORIGINY' %i).Value = dendritesOriginY[i]
+  46   theSimulator.createEntity('Variable', 'Variable:/Dendrite%d:ORIGINZ' %i).Value = -0.6
+  47   theSimulator.createEntity('Variable', 'Variable:/Dendrite%d:ROTATEZ' %i).Value = dendritesRotateZ[i]
+  48   theSimulator.createEntity('Variable', 'Variable:/Dendrite%d:VACANT' %i)
+  49   theSimulator.createEntity('Variable', 'Variable:/Dendrite%d:DIFFUSIVE' %i).Name = '/:Soma'
+  50   # Create the Dendrite membrane:
+  51   theSimulator.createEntity('System', 'System:/Dendrite%d:Membrane' %i).StepperID = 'SS'
+  52   theSimulator.createEntity('Variable', 'Variable:/Dendrite%d/Membrane:DIMENSION' %i).Value = 2
+  53   theSimulator.createEntity('Variable', 'Variable:/Dendrite%d/Membrane:VACANT' %i)
+  54   theSimulator.createEntity('Variable', 'Variable:/Dendrite%d/Membrane:DIFFUSIVE' %i).Name = '/Soma:Membrane'
+  55 run(100)
+  
  
 
 Figure 5: A Python script to create a neuron-shaped model. The file is
 available in the Spatiocyte source package as
 2012.arjunan.chapter.neuron.py.
 
- 
-
- 
-
- 
-
- 1 import math
-
- 2 import random
-
- 3 minDist = 75e-9
-
- 4 dendriteRadius = 0.75e-6
-
- 5 dendriteLength = 10e-6
-
- 6 lengths = [8.4e-6, 6.3e-6, 4.2e-6, 2.1e-6, 1e-6]
-
- 7 lengthFreqs = [7, 10, 11, 21, 108]
-
- 8 mtOriginX = []
-
- 9 mtOriginZ = []
-
-10 mtOriginY = []
-
-11 expandedLengths = []
-
-12
-
-13 def isSpacedOut(x, y, z, length):
-
-14   for i in range(len(expandedLengths)-1):
-
-15     maxOriX = mtOriginX[i]\*dendriteLength/2 + expandedLengths[i]/2
-
-16     minOriX = mtOriginX[i]\*dendriteLength/2 - expandedLengths[i]/2
-
-17     maxX = x\*dendriteLength/2 + length/2
-
-18     minX = x\*dendriteLength/2 - length/2
-
-19     y2 = math.pow((y-mtOriginY[i])\*dendriteRadius, 2)
-
-20     z2 = math.pow((z-mtOriginZ[i])\*dendriteRadius, 2)
-
-21     if((minX <= maxOriX or maxX >= minOriX) and math.sqrt(y2+z2) <
-minDist):
-
-22       return False
-
-23     elif(minX > maxOriX and math.sqrt(y2+z2+math.pow(minX-maxOriX,
-2)) < minDist):
-
-24       return False
-
-25     elif(maxX < minOriX and math.sqrt(y2+z2+math.pow(maxX-minOriX,
-2)) < minDist):
-
-26       return False
-
-27   return True
-
-28
-
-29 for i in range(len(lengthFreqs)):
-
-30   maxX = (dendriteLength-lengths[i])/dendriteLength
-
-31   for j in range(int(lengthFreqs[i])):
-
-32     expandedLengths.append(lengths[i])
-
-33     x = random.uniform(-maxX, maxX)
-
-34     y = random.uniform(-0.95, 0.95)
-
-35     z = random.uniform(-0.95, 0.95)
-
-36     while(y\*y+z\*z > 0.9 or not isSpacedOut(x, y, z, lengths[i])):
-
-37       x = random.uniform(-maxX, maxX)
-
-38       y = random.uniform(-0.95, 0.95)
-
-39       z = random.uniform(-0.95, 0.95)
-
-40     mtOriginX.append(x)
-
-41     mtOriginY.append(y)
-
-42     mtOriginZ.append(z)
-
-43
-
-44 theSimulator.createStepper('SpatiocyteStepper', 'SS').VoxelRadius =
-0.8e-8
-
-45 theSimulator.rootSystem.StepperID = 'SS'
-
-46 theSimulator.createEntity('Variable', 'Variable:/:GEOMETRY').Value =
-3
-
-47 theSimulator.createEntity('Variable', 'Variable:/:LENGTHX').Value =
-dendriteLength
-
-48 theSimulator.createEntity('Variable', 'Variable:/:LENGTHY').Value =
-dendriteRadius\*2
-
-49 theSimulator.createEntity('Variable', 'Variable:/:VACANT')
-
-50 theSimulator.createEntity('Variable', 'Variable:/:K').Value = 100
-
-51 diffuser = theSimulator.createEntity('DiffusionProcess',
-'Process:/:diffuseK')
-
-52 diffuser.VariableReferenceList = [['\_', 'Variable:/:K']]
-
-53 diffuser.D = 0.2e-12
-
-54 visualLogger = theSimulator.createEntity('VisualizationLogProcess',
-'Process:/:visualLogger')
-
-55 visualLogger.LogInterval = 1
-
-56 visualLogger.VariableReferenceList = [['\_',
-'Variable:/Membrane:VACANT'], ['\_', 'Variable:/:K']]
-
-57 theSimulator.createEntity('MoleculePopulateProcess',
-'Process:/:populate').VariableReferenceList = [['\_', 'Variable:/:K']]
-
-58 theSimulator.createEntity('System', 'System:/:Membrane').StepperID =
-'SS'
-
-59 theSimulator.createEntity('Variable',
-'Variable:/Membrane:DIMENSION').Value = 2
-
-60 theSimulator.createEntity('Variable', 'Variable:/Membrane:VACANT')
-
-61 for i in range(len(expandedLengths)):
-
-62   theSimulator.createEntity('System', 'System:/:Microtubule%d'
-%i).StepperID = 'SS'
-
-63   theSimulator.createEntity('Variable',
-'Variable:/Microtubule%d:GEOMETRY' %i).Value = 2
-
-64   theSimulator.createEntity('Variable',
-'Variable:/Microtubule%d:LENGTHX' %i).Value = expandedLengths[i]
-
-65   theSimulator.createEntity('Variable',
-'Variable:/Microtubule%d:LENGTHY' %i).Value = 6e-9
-
-66   theSimulator.createEntity('Variable',
-'Variable:/Microtubule%d:ORIGINX' %i).Value = mtOriginX[i]
-
-67   theSimulator.createEntity('Variable',
-'Variable:/Microtubule%d:ORIGINY' %i).Value = mtOriginY[i]
-
-68   theSimulator.createEntity('Variable',
-'Variable:/Microtubule%d:ORIGINZ' %i).Value = mtOriginZ[i]
-
-69   theSimulator.createEntity('Variable',
-'Variable:/Microtubule%d:VACANT' %i)
-
-70   theSimulator.createEntity('System',
-'System:/Microtubule%d:Membrane' %i).StepperID = 'SS'
-
-71   theSimulator.createEntity('Variable',
-'Variable:/Microtubule%d/Membrane:DIMENSION' %i).Value = 2
-
-72   theSimulator.createEntity('Variable',
-'Variable:/Microtubule%d/Membrane:VACANT' %i)
-
-73   visualLogger.VariableReferenceList = [['\_',
-'Variable:/Microtubule%d/Membrane:VACANT' %i]]
-
-74 run(100)
-
+::
+
+  01 import math
+  02 import random
+  03 minDist = 75e-9
+  04 dendriteRadius = 0.75e-6
+  05 dendriteLength = 10e-6
+  06 lengths = [8.4e-6, 6.3e-6, 4.2e-6, 2.1e-6, 1e-6]
+  07 lengthFreqs = [7, 10, 11, 21, 108]
+  08 mtOriginX = []
+  09 mtOriginZ = []
+  10 mtOriginY = []
+  11 expandedLengths = []
+  12
+  13 def isSpacedOut(x, y, z, length):
+  14   for i in range(len(expandedLengths)-1):
+  15     maxOriX = mtOriginX[i]\*dendriteLength/2 + expandedLengths[i]/2
+  16     minOriX = mtOriginX[i]\*dendriteLength/2 - expandedLengths[i]/2
+  17     maxX = x\*dendriteLength/2 + length/2
+  18     minX = x\*dendriteLength/2 - length/2
+  19     y2 = math.pow((y-mtOriginY[i])\*dendriteRadius, 2)
+  20     z2 = math.pow((z-mtOriginZ[i])\*dendriteRadius, 2)
+  21     if((minX <= maxOriX or maxX >= minOriX) and math.sqrt(y2+z2) < minDist):
+  22       return False
+  23     elif(minX > maxOriX and math.sqrt(y2+z2+math.pow(minX-maxOriX, 2)) < minDist):
+  24       return False
+  25     elif(maxX < minOriX and math.sqrt(y2+z2+math.pow(maxX-minOriX, 2)) < minDist):
+  26       return False
+  27   return True
+  28
+  29 for i in range(len(lengthFreqs)):
+  30   maxX = (dendriteLength-lengths[i])/dendriteLength
+  31   for j in range(int(lengthFreqs[i])):
+  32     expandedLengths.append(lengths[i])
+  33     x = random.uniform(-maxX, maxX)
+  34     y = random.uniform(-0.95, 0.95)
+  35     z = random.uniform(-0.95, 0.95)
+  36     while(y\*y+z\*z > 0.9 or not isSpacedOut(x, y, z, lengths[i])):
+  37       x = random.uniform(-maxX, maxX)
+  38       y = random.uniform(-0.95, 0.95)
+  39       z = random.uniform(-0.95, 0.95)
+  40     mtOriginX.append(x)
+  41     mtOriginY.append(y)
+  42     mtOriginZ.append(z)
+  43
+  44 theSimulator.createStepper('SpatiocyteStepper', 'SS').VoxelRadius = 0.8e-8
+  45 theSimulator.rootSystem.StepperID = 'SS'
+  46 theSimulator.createEntity('Variable', 'Variable:/:GEOMETRY').Value = 3
+  47 theSimulator.createEntity('Variable', 'Variable:/:LENGTHX').Value = dendriteLength
+  48 theSimulator.createEntity('Variable', 'Variable:/:LENGTHY').Value = dendriteRadius\*2
+  49 theSimulator.createEntity('Variable', 'Variable:/:VACANT')
+  50 theSimulator.createEntity('Variable', 'Variable:/:K').Value = 100
+  51 diffuser = theSimulator.createEntity('DiffusionProcess', 'Process:/:diffuseK')
+  52 diffuser.VariableReferenceList = [['\_', 'Variable:/:K']]
+  53 diffuser.D = 0.2e-12
+  54 visualLogger = theSimulator.createEntity('VisualizationLogProcess', 'Process:/:visualLogger')
+  55 visualLogger.LogInterval = 1
+  56 visualLogger.VariableReferenceList = [['\_', 'Variable:/Membrane:VACANT'], ['\_', 'Variable:/:K']]
+  57 theSimulator.createEntity('MoleculePopulateProcess', 'Process:/:populate').VariableReferenceList = [['\_', 'Variable:/:K']]
+  58 theSimulator.createEntity('System', 'System:/:Membrane').StepperID = 'SS'
+  59 theSimulator.createEntity('Variable', 'Variable:/Membrane:DIMENSION').Value = 2
+  60 theSimulator.createEntity('Variable', 'Variable:/Membrane:VACANT')
+  61 for i in range(len(expandedLengths)):
+  62   theSimulator.createEntity('System', 'System:/:Microtubule%d' %i).StepperID = 'SS'
+  63   theSimulator.createEntity('Variable', 'Variable:/Microtubule%d:GEOMETRY' %i).Value = 2
+  64   theSimulator.createEntity('Variable', 'Variable:/Microtubule%d:LENGTHX' %i).Value = expandedLengths[i]
+  65   theSimulator.createEntity('Variable', 'Variable:/Microtubule%d:LENGTHY' %i).Value = 6e-9
+  66   theSimulator.createEntity('Variable', 'Variable:/Microtubule%d:ORIGINX' %i).Value = mtOriginX[i]
+  67   theSimulator.createEntity('Variable', 'Variable:/Microtubule%d:ORIGINY' %i).Value = mtOriginY[i]
+  68   theSimulator.createEntity('Variable', 'Variable:/Microtubule%d:ORIGINZ' %i).Value = mtOriginZ[i]
+  69   theSimulator.createEntity('Variable', 'Variable:/Microtubule%d:VACANT' %i)
+  70   theSimulator.createEntity('System', 'System:/Microtubule%d:Membrane' %i).StepperID = 'SS'
+  71   theSimulator.createEntity('Variable', 'Variable:/Microtubule%d/Membrane:DIMENSION' %i).Value = 2
+  72   theSimulator.createEntity('Variable', 'Variable:/Microtubule%d/Membrane:VACANT' %i)
+  73   visualLogger.VariableReferenceList = [['\_', 'Variable:/Microtubule%d/Membrane:VACANT' %i]]
+  74 run(100)
+  
  
 
 Figure 6: A Python script to create a compartment with randomly
@@ -385,17 +193,21 @@ species definitions can be seen in Figures 2 (lines 8-10 and 35-38), 5
 the Variable should be set to “HD” as shown in the EM and Python
 examples below:
 
-| Variable Variable(A) {
-|     Value 100;
-|     Name "HD"; }
+::
 
-| A = theSimulator.createEntity('Variable', 'Variable:.:A')
-| A.Value = 100
-| A.Name = “HD”
+  Variable Variable(A) {
+      Value 100;
+      Name "HD"; }
+  
+  A = theSimulator.createEntity('Variable', 'Variable:.:A')
+  A.Value = 100
+  A.Name = “HD”
+  
 
-| 
-| DIMENSION
-| The DIMENSION variable defines the spatial dimension of the
+DIMENSION
+~~~~~~~~~~~~~~~
+
+The DIMENSION variable defines the spatial dimension of the
 compartment, whether it is a filament ('1'), surface (‘2’) or a volume
 (‘3’) type. At the time of writing, the filament compartment type is
 still in development. A surface compartment encloses its parent volume
@@ -499,11 +311,10 @@ faces we can set it to ‘5’. If the variable is not defined, the boundary
 type is set to the default reflective (‘0’) type. Examples in EM and
 Python to remove both of the cuboid XYPLANE faces are given below:
 
- 
+::
 
-Variable Variable(XYPLANE) { Value 5; }
-
-theSimulator.createEntity('Variable', 'Variable:.:XYPLANE').Value = 5
+  Variable Variable(XYPLANE) { Value 5; }
+  theSimulator.createEntity('Variable', 'Variable:.:XYPLANE').Value = 5
 
  
 
@@ -523,6 +334,7 @@ they are not defined. Figures 5 (lines 21-24 and 44-46) and 6 (lines
  
 
 ROTATE[X, Y, Z]
+~~~~~~~~~~~~~~~
 
 A compartment can be rotated along the [x, y, z]-axis with the origin at
 the compartment center using the ROTATE[X, Y, Z] variables respectively.
@@ -549,52 +361,46 @@ as shown in the EM and Python examples below:
 
 First-Order Sink Reaction, A →  Ø
 
-Process SpatiocyteNextReactionProcess(sink) {
+::
 
-    VariableReferenceList [\_ Variable:/:A -1]
-
-                          [\_ Variable:/:VACANT 1];
-
-    k 0.3; }
+  Process SpatiocyteNextReactionProcess(sink) {
+      VariableReferenceList [\_ Variable:/:A -1]
+                            [\_ Variable:/:VACANT 1];
+      k 0.3; }
 
 Second-Order Surface-Adsorption Reaction, Bv + Surface.VACANT → Bs
 
-Process DiffusionInfluencedReactionProcess(bind) {
+::
 
-    VariableReferenceList [\_ Variable:/:B -1]
-
-                          [\_ Variable:/Surface:VACANT -1]
-
-                          [\_ Variable:/Surface:B 1];
-
-    k 2e-8; }
+  Process DiffusionInfluencedReactionProcess(bind) {
+      VariableReferenceList [\_ Variable:/:B -1]
+                            [\_ Variable:/Surface:VACANT -1]
+                            [\_ Variable:/Surface:B 1];
+      k 2e-8; }
 
  
 
 First-Order Sink Reaction, A →  Ø
 
-sinker = theSimulator.createEntity('SpatiocyteNextReactionProcess',
-'Process:/:sink')
+::
 
-sinker.VariableReferenceList = [['\_', 'Variable:/:A', '-1']]
-
-sinker.VariableReferenceList = [['\_', 'Variable:/:VACANT', '1']]
-
-sinker.k = 0.3
+  sinker = theSimulator.createEntity('SpatiocyteNextReactionProcess',
+  'Process:/:sink')
+  sinker.VariableReferenceList = [['\_', 'Variable:/:A', '-1']]
+  sinker.VariableReferenceList = [['\_', 'Variable:/:VACANT', '1']]
+  sinker.k = 0.3
 
 Second-Order Surface-Adsorption Reaction, Bv + Surface.VACANT → Bs
 
-binder = theSimulator.createEntity('DiffusionInfluencedReactionProcess',
-'Process:/:bind')
+::
 
-binder.VariableReferenceList = [['\_', 'Variable:/:B', '-1']]
-
-binder.VariableReferenceList = [['\_', 'Variable:/Surface:VACANT',
-'-1']]
-
-binder.VariableReferenceList = [['\_', 'Variable:/Surface:B', '1']]
-
-binder.k = 2e-8
+  binder = theSimulator.createEntity('DiffusionInfluencedReactionProcess',
+  'Process:/:bind')
+  binder.VariableReferenceList = [['\_', 'Variable:/:B', '-1']]
+  binder.VariableReferenceList = [['\_', 'Variable:/Surface:VACANT',
+  '-1']]
+  binder.VariableReferenceList = [['\_', 'Variable:/Surface:B', '1']]
+  binder.k = 2e-8
 
  
 
@@ -744,18 +550,12 @@ REACTIVE variable specifies the path and name of the reactive adjacent
 surface compartment. Examples of the REACTIVE variable definition in EM
 and Python are given below:
 
- 
+::
 
-Variable Variable(REACTIVE) { Name "/Cell:Surface"; }
+  Variable Variable(REACTIVE) { Name "/Cell:Surface"; }
+  theSimulator.createEntity('Variable', 'Variable:/Surface:REACTIVE').Name
+  = "/Cell:Surface"
 
- 
-
-theSimulator.createEntity('Variable', 'Variable:/Surface:REACTIVE').Name
-= "/Cell:Surface"
-
- 
-
- 
 
 .. image:: https://raw.github.com/ecell/spatiocyte-docs/master/images/image18.png
 
@@ -785,8 +585,10 @@ SpatiocyteStepper ID. Examples of SpatiocyteStepper ID definition in
 compartments are given in Figures 2 (lines 3 and 32), 5 (lines 4, 16,
 30, 40 and 51) and 6 (lines 45, 58, 62 and 70).
 
-| VoxelRadius
-| The radius of the HCP lattice voxels can be set in the
+VoxelRadius
+~~~~~~~~~~~~
+
+The radius of the HCP lattice voxels can be set in the
 SpatiocyteStepper using the VoxelRadius property. The default radius is
 10e-9 m. Figures 2 (line 1), 5 (line 2) and 6 (line 44) show some
 examples of the VoxelRadius initialization.
@@ -825,73 +627,35 @@ showing two different species populated at the poles of a rod surface
 compartment is also listed in Figure 11 with the corresponding output in
 Figure 12.
 
- 
+::
 
- 1 # Example of python scripting to populate molecules at the poles of a
-rod compartment
-
- 2 theSimulator.createStepper('SpatiocyteStepper', 'SS').VoxelRadius =
-8e-8
-
- 3 # Create the root container compartment using the rod geometry:
-
- 4 theSimulator.rootSystem.StepperID = 'SS'
-
- 5 theSimulator.createEntity('Variable', 'Variable:/:GEOMETRY').Value =
-3
-
- 6 theSimulator.createEntity('Variable', 'Variable:/:LENGTHX').Value =
-10e-6
-
- 7 theSimulator.createEntity('Variable', 'Variable:/:LENGTHY').Value =
-2e-6
-
- 8 theSimulator.createEntity('Variable', 'Variable:/:VACANT')
-
- 9 logger = theSimulator.createEntity('VisualizationLogProcess',
-'Process:/:logger')
-
-10 logger.LogInterval = 1
-
-11 logger.VariableReferenceList = [['\_', 'Variable:/Surface:A'], ['\_',
-'Variable:/Surface:B']]
-
-12 populator = theSimulator.createEntity('MoleculePopulateProcess',
-'Process:/:populateLeft')
-
-13 populator.VariableReferenceList = [['\_', 'Variable:/Surface:A']]
-
-14 populator.OriginX = -1
-
-15 populator.UniformRadiusX = 0.5
-
-16 populator = theSimulator.createEntity('MoleculePopulateProcess',
-'Process:/:populateRight')
-
-17 populator.VariableReferenceList = [['\_', 'Variable:/Surface:B']]
-
-18 populator.OriginX = 1
-
-19 populator.UniformRadiusX = 0.5
-
-20 # Create the surface compartment:
-
-21 theSimulator.createEntity('System', 'System:/:Surface').StepperID =
-'SS'
-
-22 theSimulator.createEntity('Variable',
-'Variable:/Surface:DIMENSION').Value = 2
-
-23 theSimulator.createEntity('Variable', 'Variable:/Surface:VACANT')
-
-24 theSimulator.createEntity('Variable', 'Variable:/Surface:A').Value =
-500
-
-25 theSimulator.createEntity('Variable', 'Variable:/Surface:B').Value =
-500
-
-26 run(100)
-
+  01 # Example of python scripting to populate molecules at the poles of a rod compartment
+  02 theSimulator.createStepper('SpatiocyteStepper', 'SS').VoxelRadius = 8e-8
+  03 # Create the root container compartment using the rod geometry:
+  04 theSimulator.rootSystem.StepperID = 'SS'
+  05 theSimulator.createEntity('Variable', 'Variable:/:GEOMETRY').Value = 3
+  06 theSimulator.createEntity('Variable', 'Variable:/:LENGTHX').Value = 10e-6
+  07 theSimulator.createEntity('Variable', 'Variable:/:LENGTHY').Value = 2e-6
+  08 theSimulator.createEntity('Variable', 'Variable:/:VACANT')
+  09 logger = theSimulator.createEntity('VisualizationLogProcess', 'Process:/:logger')
+  10 logger.LogInterval = 1
+  11 logger.VariableReferenceList = [['\_', 'Variable:/Surface:A'], ['\_', 'Variable:/Surface:B']]
+  12 populator = theSimulator.createEntity('MoleculePopulateProcess', 'Process:/:populateLeft')
+  13 populator.VariableReferenceList = [['\_', 'Variable:/Surface:A']]
+  14 populator.OriginX = -1
+  15 populator.UniformRadiusX = 0.5
+  16 populator = theSimulator.createEntity('MoleculePopulateProcess', 'Process:/:populateRight')
+  17 populator.VariableReferenceList = [['\_', 'Variable:/Surface:B']]
+  18 populator.OriginX = 1
+  19 populator.UniformRadiusX = 0.5
+  20 # Create the surface compartment:
+  21 theSimulator.createEntity('System', 'System:/:Surface').StepperID = 'SS'
+  22 theSimulator.createEntity('Variable', 'Variable:/Surface:DIMENSION').Value = 2
+  23 theSimulator.createEntity('Variable', 'Variable:/Surface:VACANT')
+  24 theSimulator.createEntity('Variable', 'Variable:/Surface:A').Value = 500
+  25 theSimulator.createEntity('Variable', 'Variable:/Surface:B').Value = 500
+  26 run(100)
+  
  
 
 Figure 11: A Python script to populate molecules at the poles of a rod
@@ -972,26 +736,23 @@ are shown in Figures 2 (lines 11-16 and 39-50), 5 (lines 26-28) and 6
 (lines 51-53). Below is a Python example to diffuse A molecules over B
 molecules with a diffusion coefficient of 1e-12  m2s-1.
 
- 
+::
 
-diffuser = theSimulator.createEntity('DiffusionProcess',
-'Process:/:diffuse')
-
-binder.VariableReferenceList = [['\_', 'Variable:/Surface:A']]
-
-binder.VariableReferenceList = [['\_', 'Variable:/Surface:B', '-1']]
-
-binder.D = 1e-12
+  diffuser = theSimulator.createEntity('DiffusionProcess',
+  'Process:/:diffuse')
+  binder.VariableReferenceList = [['\_', 'Variable:/Surface:A']]
+  binder.VariableReferenceList = [['\_', 'Variable:/Surface:B', '-1']]
+  binder.D = 1e-12
 
 D
-~
+~~
 
 In the DiffusionProcess, the diffusion coefficient of the molecule
 species is set with D, which has the unit m2s-1. The default value is 0
 m2s-1.
 
 P
-~
+~~
 
 P is an arbitrarily set reaction probability limit of the diffusing
 species, within the range [0, 1]. The default value is ‘1’, which is
@@ -1011,22 +772,16 @@ diffusion coefficient, D and the reaction probability limit, P from the
 DiffusionProcess. Examples of PeriodicBoundaryDiffusionProcess in EM and
 Python are as follows:
 
- 
+::
 
-Process PeriodicBoundaryDiffusionProcess(diffuse) {
-
-  VariableReferenceList [\_ Variable:/Surface:A];
-
-  D 0.2e-12; }
-
- 
-
-diffuser = theSimulator.createEntity('PeriodicBoundaryDiffusionProcess',
-'Process:/:diffuse')
-
-diffuser.VariableReferenceList = [['\_', 'Variable:/Surface:A']]
-
-diffuser.D = 0.2e-12
+  Process PeriodicBoundaryDiffusionProcess(diffuse) {
+    VariableReferenceList [\_ Variable:/Surface:A];
+    D 0.2e-12; }
+  
+  diffuser = theSimulator.createEntity('PeriodicBoundaryDiffusionProcess',
+  'Process:/:diffuse')
+  diffuser.VariableReferenceList = [['\_', 'Variable:/Surface:A']]
+  diffuser.D = 0.2e-12
 
 DiffusionInfluencedReactionProcess
 ----------------------------------
@@ -1042,19 +797,17 @@ process definition is provided below:
 
 Second-Order Reaction, A + B → C
 
-binder = theSimulator.createEntity('DiffusionInfluencedReactionProcess',
-'Process:/:associate')
+::
 
-binder.VariableReferenceList = [['\_', 'Variable:/:A', '-1']]
-
-binder.VariableReferenceList = [['\_', 'Variable:/:B', '-1']]
-
-binder.VariableReferenceList = [['\_', 'Variable:/:C', '1']]
-
-binder.p = 0.5
+  binder = theSimulator.createEntity('DiffusionInfluencedReactionProcess',
+  'Process:/:associate')
+  binder.VariableReferenceList = [['\_', 'Variable:/:A', '-1']]
+  binder.VariableReferenceList = [['\_', 'Variable:/:B', '-1']]
+  binder.VariableReferenceList = [['\_', 'Variable:/:C', '1']]
+  binder.p = 0.5
 
 k
-~
+~~
 
 The intrinsic rate constant of the diffusion-influenced reaction is set
 to k. In volume reactions, the relationship between the intrinsic rate
@@ -1064,7 +817,7 @@ D is the diffusion coefficient and R is the contact radius (i.e., 2rv).
 The units of k for various reaction types are given in Table 2.
 
 p
-~
+~~
 
 The absolute reactive collision probability of the reaction is given by
 p. This process requires either the value of k or p.
@@ -1207,28 +960,27 @@ and 70-75), while Python examples of zeroth- and first-order
 
 Zeroth-Order Reaction, 1 → A
 
-zero = theSimulator.createEntity('SpatiocyteNextReactionProcess',
-'Process:/:create')
+::
 
-zero.VariableReferenceList = [['\_', 'Variable:/:A', '1']]
-
-zero.k = 0.01
+  zero = theSimulator.createEntity('SpatiocyteNextReactionProcess',
+  'Process:/:create')
+  zero.VariableReferenceList = [['\_', 'Variable:/:A', '1']]
+  zero.k = 0.01
 
  
 
 First-Order Surface-Adsorption Reaction, Av → As
 
-uni = theSimulator.createEntity('SpatiocyteNextReactionProcess',
-'Process:/:adsorp')
+::
 
-uni.VariableReferenceList = [['\_', 'Variable:/:A', '-1']]
-
-uni.VariableReferenceList = [['\_', 'Variable:/Surface:A', '1']]
-
-uni.k = 0.01
+  uni = theSimulator.createEntity('SpatiocyteNextReactionProcess',
+  'Process:/:adsorp')
+  uni.VariableReferenceList = [['\_', 'Variable:/:A', '-1']]
+  uni.VariableReferenceList = [['\_', 'Variable:/Surface:A', '1']]
+  uni.k = 0.01
 
 k
-~
+~~
 
 The rate constant of the event-driven reaction. For second-order
 reactions, the units are listed in Table 2. In the case of the
@@ -1289,24 +1041,18 @@ total number of intervals and logged. Figure 2 (lines 21-25) shows an
 example of the MicroscopyTrackingProcess definition. A Python example is
 given below:
 
- 
+::
 
-tracker = theSimulator.createEntity('MicroscopyTrackingProcess',
-'Process:/:track')
-
-tracker.VariableReferenceList = [['\_', 'Variable:/Surface:MinEE', '2']]
-
-tracker.VariableReferenceList = [['\_', 'Variable:/Surface:MinDEE',
-'3']]
-
-tracker.VariableReferenceList = [['\_', 'Variable:/Surface:MinE', '-2']]
-
-tracker.VariableReferenceList = [['\_', 'Variable:/Surface:MinDE',
-'-2']]
-
-tracker.VariableReferenceList = [['\_', 'Variable:/Surface:MinE', '-1']]
-
-tracker.FileName = “microscopyLog0.dat”
+  tracker = theSimulator.createEntity('MicroscopyTrackingProcess',
+  'Process:/:track')
+  tracker.VariableReferenceList = [['\_', 'Variable:/Surface:MinEE', '2']]
+  tracker.VariableReferenceList = [['\_', 'Variable:/Surface:MinDEE',
+  '3']]
+  tracker.VariableReferenceList = [['\_', 'Variable:/Surface:MinE', '-2']]
+  tracker.VariableReferenceList = [['\_', 'Variable:/Surface:MinDE',
+  '-2']]
+  tracker.VariableReferenceList = [['\_', 'Variable:/Surface:MinE', '-1']]
+  tracker.FileName = “microscopyLog0.dat”
 
  
 
@@ -1419,7 +1165,9 @@ membrane. Each displayed frame can be saved into the Portable Network
 Graphics (PNG) image format. A quick way to create a movie from the
 saved images is to use the ffmpeg program:
 
-$ ffmpeg -i image%07d.png -sameq out.mp4
+::
+
+  $ ffmpeg -i image%07d.png -sameq out.mp4
 
 Table 3: SpatiocyteVisualizer features and keyboard shortcuts
 
