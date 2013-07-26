@@ -49,7 +49,7 @@ image0
 
  
 
-where the constant :math:` \gamma = `, L is the lipid species, k is the intrinsic
+where the constant :math:`a^2 + b^2 = c^2`, L is the lipid species, k is the intrinsic
 reaction rate of j, D is the diffusion coefficient,  while the species
 subscripts v and s denote volume and surface species respectively.
 
