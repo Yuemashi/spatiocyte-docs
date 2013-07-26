@@ -1,6 +1,6 @@
 import sys, os
 
-extensions = []
+extensions = ['sphinx.ext.pngmath', 'sphinx.ext.autodoc']
 
 templates_path = ['_templates']
 
