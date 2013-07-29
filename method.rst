@@ -102,7 +102,7 @@ implementation of the Next Reaction (NR) method (Gibson and Bruck,
 
  
 
-In the process, the reaction propensity image8 (unit s-1) is
+In the process, the reaction propensity :math:`a_\mu` (unit s-1) is
 calculated from the rate coefficient according to
 
 image9
