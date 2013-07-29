@@ -68,7 +68,7 @@ image2,
 where in the HCP lattice, the constant :math:`\alpha_i = \frac{2}{3}` if it is a volume
 species or :math:`\alpha_i = (\frac{2\sqrt{2}+4\sqrt{3}+3\sqrt{6}+\sqrt{22}}{6\sqrt{2}+4\sqrt{3}+3\sqrt{6}})^2` if it belongs to a surface compartment. However, if
 i participates in a diffusion-limited reaction, a reactive collision may
-take place at time slices smaller than the walk interval image5,
+take place at time slices smaller than the walk interval :math:`\frac{\alpha_i r_v^2}{D_i}`,
 causing pj > 1. To ensure pj ≤ 1, we reduce the DiffusionProcess
 interval such that its next execution time becomes
 
