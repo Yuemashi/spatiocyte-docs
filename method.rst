@@ -65,7 +65,7 @@ coefficient Di can be moved to a randomly selected neighbor voxel is
 
 image2,
 
-where in the HCP lattice, the constant image3 if it is a volume
+where in the HCP lattice, the constant :math:`\alpha_i = \frac{2}{3}` if it is a volume
 species or image4 if it belongs to a surface compartment. However, if
 i participates in a diffusion-limited reaction, a reactive collision may
 take place at time slices smaller than the walk interval image5,
