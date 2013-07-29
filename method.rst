@@ -49,7 +49,7 @@ image0
 
  
 
-where the constant :math:`\gamma`, L is the lipid species, k is the intrinsic
+where the constant :math:`\gamma = \frac{(2\sqrt{2}+4\sqrt{3}+3\sqrt{6}+\sqrt{22})^2}{72(6\sqrt{2}+4\sqrt{3}+3\sqrt{6})}`, L is the lipid species, k is the intrinsic
 reaction rate of j, D is the diffusion coefficient,  while the species
 subscripts v and s denote volume and surface species respectively.
 
