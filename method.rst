@@ -45,9 +45,9 @@ a reaction j. Following our discretized scheme (Arjunan and Tomita,
 1949), when a diffusing molecule collides with a reactant pair of j at
 the target voxel, they react with probability
 
-image0
 
- 
+.. image:: https://raw.github.com/ecell/spatiocyte-docs/master/images/image0.png
+
 
 where the constant :math:`\gamma = \frac{(2\sqrt{2}+4\sqrt{3}+3\sqrt{6}+\sqrt{22})^2}{72(6\sqrt{2}+4\sqrt{3}+3\sqrt{6})}`, L is the lipid species, k is the intrinsic
 reaction rate of j, D is the diffusion coefficient,  while the species
@@ -63,7 +63,9 @@ large for an accurate value of pj. Given ts is the current simulation
 time, the next time a molecule of a diffusing species i with a diffusion
 coefficient Di can be moved to a randomly selected neighbor voxel is
 
-image2,
+
+.. image:: https://raw.github.com/ecell/spatiocyte-docs/master/images/image2.png
+
 
 where in the HCP lattice, the constant :math:`\alpha_i = \frac{2}{3}` if it is a volume
 species or :math:`\alpha_i = (\frac{2\sqrt{2}+4\sqrt{3}+3\sqrt{6}+\sqrt{22}}{6\sqrt{2}+4\sqrt{3}+3\sqrt{6}})^2` if it belongs to a surface compartment. However, if
@@ -72,13 +74,9 @@ take place at time slices smaller than the walk interval :math:`\frac{\alpha_i r
 causing pj > 1. To ensure pj ≤ 1, we reduce the DiffusionProcess
 interval such that its next execution time becomes
 
-image6
 
- 
+.. image:: https://raw.github.com/ecell/spatiocyte-docs/master/images/image6.png
 
-image7
-
- 
 
 Here Pi is an arbitrarily set reaction probability limit (default value
 is unity) such that 0 ≤ Pi ≤ 1, and ρi=max{p1, … , pJ} where J is the
