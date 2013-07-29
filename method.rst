@@ -98,18 +98,12 @@ implementation of the Next Reaction (NR) method (Gibson and Bruck,
 2000), which itself is a variation of the Gillespie algorithm (Gillespie
 1976, 1977).
 
- 
-
 In the process, the reaction propensity :math:`a_\mu` (unit s-1) is
 calculated from the rate coefficient according to
 
-image9
-
- 
 
 .. image:: https://raw.github.com/ecell/spatiocyte-docs/master/images/image10.png
 
- 
 
 Here, S and V are area and volume of the reaction compartment
 respectively, while kS (unit ms-1) is the surface-average adsorption
