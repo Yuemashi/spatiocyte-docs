@@ -120,7 +120,7 @@ replaced with S if both reactants are in a surface compartment. The next
 reaction time of a randomly selected molecule in a first order reaction
 or a pair of molecules in a second-order reaction is given by
 
-image11
+.. image:: https://raw.github.com/ecell/spatiocyte-docs/master/images/image11.png
 
 with ur a uniformly distributed random number in the range (0,1).
 
