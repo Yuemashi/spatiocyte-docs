@@ -449,6 +449,24 @@ Table 1: Combinations of volume and surface VACANT values and their
 corresponding intersected peer compartment forms. In all cases X is an
 integer and the DIFFUSIVE variable is not set.
 
++-----+-------+-----+-------+-----+
+|X    |0      |X    |0      |A    |
++-----+-------+-----+-------+-----+
+|X    |nonzero|X    |nonzero|B    |
++-----+-------+-----+-------+-----+
+|X    |0      |X    |nonzero|C    |
++-----+-------+-----+-------+-----+
+|< X  |0      |X    |0      |D    |
++-----+-------+-----+-------+-----+
+|< X  |0      |X    |nonzero|E    |
++-----+-------+-----+-------+-----+
+|< X  |nonzero|X    |nonzero|F    |
++-----+-------+-----+-------+-----+
+|     |       |     |       |     |
++-----+-------+-----+-------+-----+
+|     |       |     |       |     |
++-----+-------+-----+-------+-----+
+
 Green Sphere Compartment
 
 White Sphere Compartment
@@ -467,67 +485,6 @@ Volume VACANT.Value
 
 Surface VACANT.Value
 
- 
-
-X
-
-0
-
-X
-
-0
-
-A
-
-X
-
-nonzero
-
-X
-
-nonzero
-
-B
-
-X
-
-0
-
-X
-
-nonzero
-
-C
-
-< X
-
-0
-
-X
-
-0
-
-D
-
-< X
-
-0
-
-X
-
-nonzero
-
-E
-
-< X
-
-nonzero
-
-X
-
-nonzero
-
-F
 
  
 
@@ -832,115 +789,30 @@ Table 2: Units of the rate constant, k in
 nonHD) and †SpatiocyteNextReactionProcess (Reactant 1 and/or Reactant 2
 are HD).
 
-Reactant 1
++----------+--------------+--------+---------------+--------+
+|Reactant1 |Reactant2     |Product1|Product2       |k(units)|
++----------+--------------+--------+---------------+--------+
+|\*†Volume |Volume        |Volume  |Volume         |m3s-1   |
++----------+--------------+--------+---------------+--------+
+|\*†Surface|Surface       |Surface |Surface        |m2s-1   |
++----------+--------------+--------+---------------+--------+
+|\*†Volume |Surface       |Volume  |Volume         |m2s-1   |
++----------+--------------+--------+---------------+--------+
+|\*†Volume |Surface       |Surface |Surface        |m3s-1   |
++----------+--------------+--------+---------------+--------+
+|\*†Volume |Surface       |Volume  |Surface        |m3s-1   |
++----------+--------------+--------+---------------+--------+
+|\*†Volume |Surface,VACANT|Surface |None           |ms-1    |
++----------+--------------+--------+---------------+--------+
+|†Volume   |None          |Surface |None           |ms-1    |
++----------+--------------+--------+---------------+--------+
+|†Volume   |None          |Volume  |None           |s-1     |
++----------+--------------+--------+---------------+--------+
+|†Surface  |None          |Surface |None           |s-1     |
++----------+--------------+--------+---------------+--------+
+|†Surface  |None          |Volume  |None           |s-1     |
++----------+--------------+--------+---------------+--------+
 
-Reactant 2
-
-Product 1
-
-Product 2
-
- k (units)
-
-\*†Volume
-
-Volume
-
-Volume
-
-Volume
-
-m3s-1
-
-\*†Surface
-
-Surface
-
-Surface
-
-Surface
-
-m2s-1
-
-\*†Volume
-
-Surface
-
-Volume
-
-Volume
-
-m2s-1
-
-\*†Volume
-
-Surface
-
-Surface
-
-Surface
-
-m3s-1
-
-\*†Volume
-
-Surface
-
-Volume
-
-Surface
-
-m3s-1
-
-\*Volume
-
-Surface.VACANT
-
-Surface
-
-None
-
-ms-1
-
-†Volume
-
-None
-
-Surface
-
-None
-
-ms-1
-
-†Volume
-
-None
-
-Volume
-
-None
-
-s-1
-
-†Surface
-
-None
-
-Surface
-
-None
-
-s-1
-
-†Surface
-
-None
-
-Volume
-
-None
-
-s-1
 
  
 
@@ -1174,88 +1046,52 @@ saved images is to use the ffmpeg program:
 
 Table 3: SpatiocyteVisualizer features and keyboard shortcuts
 
-Feature
 
-Keyboard shortcut(s)
-
-Play Forward
-
-Right arrow
-
-Play Backward
-
-Left arrow
-
-Step Forward
-
-Up arrow or Enter
-
-Step Backward
-
-Down arrow or Shift+Enter
-
-Pause/Play
-
-Space
-
-Zoom In
-
-Ctrl++ or Ctrl+= or Page Up
-
-Zoom Out
-
-Ctrl+- or Page Down
-
-Reset View
-
-Ctrl+0 or Home
-
-Rotate along x-axis clockwise
-
-Ctrl+Up Arrow
-
-Rotate along x-axis counter-clockwise
-
-Ctrl+Down Arrow
-
-Rotate along y-axis clockwise
-
-Ctrl+Right Arrow
-
-Rotate along y-axis counter-clockwise
-
-Ctrl+Left Arrow
-
-Rotate along z-axis clockwise
-
-z
-
-Rotate along z-axis counter-clockwise
-
-Z
-
-Translate Up
-
-Shift+Up Arrow
-
-Translate Down
-
-Shift+Down Arrow
-
-Translate Right
-
-Shift+Right Arrow
-
-Translate Left
-
-Shift+Left Arrow
-
-Save current frame as a PNG image
-
-s
-
-Start/Stop recording PNG frames
-
-S
-
++--------------------------------+--------------------------------+
+|Feature                         |Keyboard shortcut(s)            |
++--------------------------------+--------------------------------+
+|Play Forward                    |Right arrow                     |
++--------------------------------+--------------------------------+
+|Play Backward                   |Left arrow                      |
++--------------------------------+--------------------------------+
+|Step Forward                    |Up arrow or Enter               |
++--------------------------------+--------------------------------+
+|Step Backward                   |Down arrow or Shift+Enter       |
++--------------------------------+--------------------------------+
+|Pause/Play                      |Space                           |
++--------------------------------+--------------------------------+
+|Zoom In                         |Ctrl++ or Ctrl+= or PageUp      |
++--------------------------------+--------------------------------+
+|Zoom Out                        |Ctrl+- or PageDown              |
++--------------------------------+--------------------------------+
+|Reset View                      |Ctrl+0 or Home                  |
++--------------------------------+--------------------------------+
+|Rotate along x-axis clockwise   |Ctrl+Up Arrow                   |
++--------------------------------+--------------------------------+
+|Rotate along x-axis             |Ctrl+Down Arrow                 |
+|counter-clockwise               |                                |
++--------------------------------+--------------------------------+
+|Rotate along y-axis clockwise   |Ctrl+Right Arrow                |
++--------------------------------+--------------------------------+
+|Rotate along y-axis             |Ctrl+Left Arrow                 |
+|counter-clockwise               |                                |
++--------------------------------+--------------------------------+
+|Rotate along z-axis clockwise   |z                               |
++--------------------------------+--------------------------------+
+|Rotate along z-axis             |Z                               |
+|counter-clockwise               |                                |
++--------------------------------+--------------------------------+
+|Translate Up                    |Shift+Up Arrow                  |
++--------------------------------+--------------------------------+
+|Translate Down                  |Shift+Down Arrow                |
++--------------------------------+--------------------------------+
+|Translate Right                 |Shift+Right Arrow               |
++--------------------------------+--------------------------------+
+|Translate Left                  |Shift+Left Arrow                |
++--------------------------------+--------------------------------+
+|Save current frame as a PNG     |s                               |
+|image                           |                                |
++--------------------------------+--------------------------------+
+|Start/Stop recording PNG frames |S                               |
++--------------------------------+--------------------------------+
 
