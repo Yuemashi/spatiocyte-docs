@@ -138,7 +138,7 @@ get some debugging information using the Valgrind tool:
 ::
 
   $ valgrind --tool=memcheck --num-callers=40 --leak-check=full python
-  $HOME/root/bin/ecell3-session -f modelFileName.eml
+  $ HOME/root/bin/ecell3-session -f modelFileName.eml
 
 
 .. image:: https://raw.github.com/ecell/spatiocyte-docs/master/images/image12.png
