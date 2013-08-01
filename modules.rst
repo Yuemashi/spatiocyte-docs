@@ -36,7 +36,7 @@ definitions can be seen in Figures 2 (lines 4-7 and 33-34), 5 (lines
 5-8, 17-24, 31-32, 41-49 and 52-54) and 6 (lines 46-49, 59-60, 63-69 and
 71-72).
 
-.. code-block:: python
+.. code-block:: none
    :linenos:
 
    # Example of python scripting to create a neuron with 5 minor processes
@@ -101,7 +101,7 @@ Figure 5: A Python script to create a neuron-shaped model. The file is
 available in the Spatiocyte source package as
 2012.arjunan.chapter.neuron.py.
 
-.. code-block:: python
+.. code-block:: none
    :linenos:
 
    import math
