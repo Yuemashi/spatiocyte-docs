@@ -147,7 +147,7 @@ get some debugging information using the Valgrind tool:
 
 Figure 1: The E-Cell Session Monitor
 
-.. code-block::
+.. code-block:: none
    :linenos:
 
    01 Stepper SpatiocyteStepper(SS) { VoxelRadius 1e-8; } # m
