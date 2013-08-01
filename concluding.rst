@@ -44,41 +44,41 @@ parameter tuning example.
 References
 ==========
 
-#. 1.Arjunan, S. N. V. (2009) Modeling three-dimensional spatial
+#. Arjunan, S. N. V. (2009) Modeling three-dimensional spatial
    regulation of bacterial cell division. PhD Thesis, Keio University. 
 
-#. 2.Arjunan, S. N. V. and Tomita, M. (2009). Modeling
+#. Arjunan, S. N. V. and Tomita, M. (2009). Modeling
    reaction-diffusion of molecules on surface and in volume spaces with
    the E-Cell System. International Journal of Computer Science and
    Information Security. 3(1): 211–216. 
 
-#. 3.Arjunan, S. N. V. and Tomita, M. (2010). A new multicompartmental
+#. Arjunan, S. N. V. and Tomita, M. (2010). A new multicompartmental
    reaction-diffusion modeling method links transient membrane
    attachment of E. coli MinE to E-ring formation. Systems and Synthetic
    Biology 4(1): 35-53 
 
-#. 4.Collins, F. C. and Kimball, G. E. (1949). Diffusion-controlled
+#. Collins, F. C. and Kimball, G. E. (1949). Diffusion-controlled
    reaction rates. J Colloid Sci 4(4):425–437. 
 
-#. 5.Gibson, M. and Bruck, J. (2000). Efficient exact stochastic
+#. Gibson, M. and Bruck, J. (2000). Efficient exact stochastic
    simulation of chemical systems with many species and many channels. J
    Phys Chem A 104(9):1876–1889 
 
-#. 6.Gillespie, D. T. (1976). A general method for numerically
+#. Gillespie, D. T. (1976). A general method for numerically
    simulating the stochastic time evolution of coupled chemical
    reactions. J Comput Phys 22(4):403–434 
 
-#. 7.Gillespie, D. T. (1977). Exact stochastic simulation of coupled
+#. Gillespie, D. T. (1977). Exact stochastic simulation of coupled
    chemical reactions. J Phys Chem 81(25):2340–2361 
 
-#. 8.Dix JA, Verkman AS. (2008). Crowding effects on diffusion in
+#. Dix JA, Verkman AS. (2008). Crowding effects on diffusion in
    solutions and cells. Annu Rev Biophys. 37:247-63. 
 
-#. 9.Hall D, Hoshino M. (2010). Effects of macromolecular crowding on
+#. Hall D, Hoshino M. (2010). Effects of macromolecular crowding on
    intracellular diffusion from a single particle perspective.
    Biophysical Reviews. 2(1):39-53. 
 
-#. 10.Takahashi, K., Kaizu, K., Hu, B. and Tomita, M. (2004). A
+#. Takahashi, K., Kaizu, K., Hu, B. and Tomita, M. (2004). A
    multi-algorithm, multi-timescale method for cell simulation.
    Bioinformatics. 20(4):538–546 
 
