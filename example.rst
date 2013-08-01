@@ -92,7 +92,7 @@ using SpatiocyteVisualizer and select the set of parameters that best
 captures the expected result. Figure 15 shows an example Python script
 that loads all the visualization log files within a directory.
 
-.. code-block:: python
+.. code-block:: none
    :linenos:
 
    import os
@@ -101,26 +101,26 @@ that loads all the visualization log files within a directory.
    k = [2.5e-3]
    FileName = ''
    for x in p1:
-       for y in p2:
-           for z in k:
-               os.system('ecell3-session --parameters=\\"{\\'FileName\\':\\'' + FileName + \\
-                   str(x) + '\_' + str(y) + '\_' + str(z) + '\_visualLog0.dat\\',\\'p1\\':' + \\
-                   str(x) + ',\\'p2\\':' + str(y) + ',\\'k\\':' + str(z) +'}\\" \\
-                   2012.arjunan.chapter.cluster.py')
+     for y in p2:
+       for z in k:
+         os.system('ecell3-session --parameters=\\"{\\'FileName\\':\\'' + FileName + \\
+             str(x) + '\_' + str(y) + '\_' + str(z) + '\_visualLog0.dat\\',\\'p1\\':' + \\
+             str(x) + ',\\'p2\\':' + str(y) + ',\\'k\\':' + str(z) +'}\\" \\
+             2012.arjunan.chapter.cluster.py')
   
 Figure 14: A Python script to run the cluster model multiple times with
 different parameter values. The file is available in the Spatiocyte
 source package as 2012.arjunan.chapter.parameter.py.
 
-.. code-block:: python
+.. code-block:: none
    :linenos:
 
    import glob
    import os
    files = glob.glob('\*0.dat')
    for i in files:
-       print "\\nloading file " + i + "..."
-       os.system('spatiocyte ' + i)
+     print "\\nloading file " + i + "..."
+     os.system('spatiocyte ' + i)
   
 
 Figure 15: A Python script to sequentially load multiple visualization
