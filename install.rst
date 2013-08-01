@@ -150,82 +150,82 @@ Figure 1: The E-Cell Session Monitor
 .. code-block:: none
    :linenos:
 
-   01 Stepper SpatiocyteStepper(SS) { VoxelRadius 1e-8; } # m
-   02 System System(/) {
-   03   StepperID SS;
-   04   Variable Variable(GEOMETRY) { Value 3; } # rod shaped compartment
-   05   Variable Variable(LENGTHX) { Value 4.5e-6; } # m
-   06   Variable Variable(LENGTHY) { Value 1e-6; } # m
-   07   Variable Variable(VACANT) { Value 0; }
-   08   Variable Variable(MinDatp) { Value 0; } # molecule number
-   09   Variable Variable(MinDadp) { Value 1300; } # molecule number
-   10   Variable Variable(MinEE) { Value 0; } # molecule number
-   11   Process DiffusionProcess(diffuseMinD) {
-   12     VariableReferenceList [\_ Variable:/:MinDatp] [\_Variable:/:MinDadp];
-   13     D 16e-12; } # m^2/s
-   14   Process DiffusionProcess(diffuseMinE) {
-   15     VariableReferenceList [\_ Variable:/:MinEE];
-   16     D 10e-12; } # m^2/s
-   17   Process VisualizationLogProcess(visualize) {
-   18     VariableReferenceList [\_ Variable:/Surface:MinEE] [\_Variable:/Surface:MinDEE] [\_ Variable:/Surface:MinDEED]
-   19                           [\_ Variable:/Surface:MinD];
-   20     LogInterval 0.5; } # s
-   21   Process MicroscopyTrackingProcess(track) {
-   22     VariableReferenceList [\_ Variable:/Surface:MinEE 2] [\_Variable:/Surface:MinDEE 3] [\_ Variable:/Surface:MinDEED 4]
-   23                           [\_ Variable:/Surface:MinD 1] [\_Variable:/Surface:MinEE -2] [\_ Variable:/Surface:MinDEED -2]
-   24                           [\_ Variable:/Surface:MinEE -1] [\_Variable:/Surface:MinDEED -4] [\_ Variable:/Surface:MinD -1];
-   25     FileName "microscopyLog0.dat"; }
-   26   Process MoleculePopulateProcess(populate) {
-   27     VariableReferenceList [\_ Variable:/:MinDatp] [\_Variable:/:MinDadp] [\_ Variable:/:MinEE] [\_ Variable:/Surface:MinD]
-   28                           [\_ Variable:/Surface:MinDEE] [\_Variable:/Surface:MinDEED] [\_ Variable:/Surface:MinEE]; }
-   29 }
-   30
-   31 System System(/Surface) {
-   32   StepperID SS;
-   33   Variable Variable(DIMENSION) { Value 2; } # surface compartment
-   34   Variable Variable(VACANT) { Value 0; }
-   35   Variable Variable(MinD) { Value 0; } # molecule number
-   36   Variable Variable(MinEE) { Value 0; } # molecule number
-   37   Variable Variable(MinDEE) { Value 700; } # molecule number
-   38   Variable Variable(MinDEED) { Value 0; } # molecule number
-   39   Process DiffusionProcess(diffuseMinD) {
-   40     VariableReferenceList [\_ Variable:/Surface:MinD];
-   41     D 0.02e-12; } # m^2/s
-   42   Process DiffusionProcess(diffuseMinEE) {
-   43     VariableReferenceList [\_ Variable:/Surface:MinEE];
-   44     D 0.02e-12; } # m^2/s
-   45   Process DiffusionProcess(diffuseMinDEE) {
-   46     VariableReferenceList [\_ Variable:/Surface:MinDEE];
-   47     D 0.02e-12; } # m^2/s
-   48   Process DiffusionProcess(diffuseMinDEED) {
-   49      VariableReferenceList [\_ Variable:/Surface:MinDEED];
-   50     D 0.02e-12; } # m^2/s
-   51   Process DiffusionInfluencedReactionProcess(reaction1) {
-   52     VariableReferenceList [\_ Variable:/Surface:VACANT -1] [\_Variable:/:MinDatp -1] [\_ Variable:/Surface:MinD 1];
-   53     k 2.2e-8; } # m/s
-   54   Process DiffusionInfluencedReactionProcess(reaction2) {
-   55     VariableReferenceList [\_ Variable:/Surface:MinD -1] [\_Variable:/:MinDatp -1] [\_ Variable:/Surface:MinD 1]
-   56                           [\_ Variable:/Surface:MinD 1];
-   57     k 3e-20; } # m^3/s
-   58   Process DiffusionInfluencedReactionProcess(reaction3) {
-   59     VariableReferenceList [\_ Variable:/Surface:MinD -1] [\_Variable:/:MinEE -1] [\_ Variable:/Surface:MinDEE 1];
-   60     k 5e-19; } # m^3/s
-   61   Process SpatiocyteNextReactionProcess(reaction4) {
-   62     VariableReferenceList [\_ Variable:/Surface:MinDEE -1] [\_Variable:/Surface:MinEE 1] [\_ Variable:/:MinDadp 1];
-   63     k 1; } # s^{-1}
-   64   Process SpatiocyteNextReactionProcess(reaction5) {
-   65     VariableReferenceList [\_ Variable:/:MinDadp -1] [\_Variable:/:MinDatp 1];
-   66     k 5; } # s^{-1}
-   67   Process DiffusionInfluencedReactionProcess(reaction6) {
-   68     VariableReferenceList [\_ Variable:/Surface:MinDEE -1] [\_Variable:/Surface:MinD -1] [\_ Variable:/Surface:MinDEED 1];
-   69     k 5e-15; } # m^2/s
-   70   Process SpatiocyteNextReactionProcess(reaction7) {
-   71     VariableReferenceList [\_ Variable:/Surface:MinDEED -1] [\_Variable:/Surface:MinDEE 1] [\_ Variable:/:MinDadp 1];
-   72     k 1; } # s^{-1}
-   73   Process SpatiocyteNextReactionProcess(reaction8) {
-   74     VariableReferenceList [\_ Variable:/Surface:MinEE -1] [\_Variable:/:MinEE 1];
-   75     k 0.83; } # s^{-1}
-   76 }
+   Stepper SpatiocyteStepper(SS) { VoxelRadius 1e-8; } # m
+   System System(/) {
+     StepperID SS;
+     Variable Variable(GEOMETRY) { Value 3; } # rod shaped compartment
+     Variable Variable(LENGTHX) { Value 4.5e-6; } # m
+     Variable Variable(LENGTHY) { Value 1e-6; } # m
+     Variable Variable(VACANT) { Value 0; }
+     Variable Variable(MinDatp) { Value 0; } # molecule number
+     Variable Variable(MinDadp) { Value 1300; } # molecule number
+     Variable Variable(MinEE) { Value 0; } # molecule number
+     Process DiffusionProcess(diffuseMinD) {
+       VariableReferenceList [\_ Variable:/:MinDatp] [\_Variable:/:MinDadp];
+       D 16e-12; } # m^2/s
+     Process DiffusionProcess(diffuseMinE) {
+       VariableReferenceList [\_ Variable:/:MinEE];
+       D 10e-12; } # m^2/s
+     Process VisualizationLogProcess(visualize) {
+       VariableReferenceList [\_ Variable:/Surface:MinEE] [\_Variable:/Surface:MinDEE] [\_ Variable:/Surface:MinDEED]
+                             [\_ Variable:/Surface:MinD];
+       LogInterval 0.5; } # s
+     Process MicroscopyTrackingProcess(track) {
+       VariableReferenceList [\_ Variable:/Surface:MinEE 2] [\_Variable:/Surface:MinDEE 3] [\_ Variable:/Surface:MinDEED 4]
+                             [\_ Variable:/Surface:MinD 1] [\_Variable:/Surface:MinEE -2] [\_ Variable:/Surface:MinDEED -2]
+                             [\_ Variable:/Surface:MinEE -1] [\_Variable:/Surface:MinDEED -4] [\_ Variable:/Surface:MinD -1];
+       FileName "microscopyLog0.dat"; }
+     Process MoleculePopulateProcess(populate) {
+       VariableReferenceList [\_ Variable:/:MinDatp] [\_Variable:/:MinDadp] [\_ Variable:/:MinEE] [\_ Variable:/Surface:MinD]
+                             [\_ Variable:/Surface:MinDEE] [\_Variable:/Surface:MinDEED] [\_ Variable:/Surface:MinEE]; }
+   }
+   
+   System System(/Surface) {
+     StepperID SS;
+     Variable Variable(DIMENSION) { Value 2; } # surface compartment
+     Variable Variable(VACANT) { Value 0; }
+     Variable Variable(MinD) { Value 0; } # molecule number
+     Variable Variable(MinEE) { Value 0; } # molecule number
+     Variable Variable(MinDEE) { Value 700; } # molecule number
+     Variable Variable(MinDEED) { Value 0; } # molecule number
+     Process DiffusionProcess(diffuseMinD) {
+       VariableReferenceList [\_ Variable:/Surface:MinD];
+       D 0.02e-12; } # m^2/s
+     Process DiffusionProcess(diffuseMinEE) {
+       VariableReferenceList [\_ Variable:/Surface:MinEE];
+       D 0.02e-12; } # m^2/s
+     Process DiffusionProcess(diffuseMinDEE) {
+       VariableReferenceList [\_ Variable:/Surface:MinDEE];
+       D 0.02e-12; } # m^2/s
+     Process DiffusionProcess(diffuseMinDEED) {
+        VariableReferenceList [\_ Variable:/Surface:MinDEED];
+       D 0.02e-12; } # m^2/s
+     Process DiffusionInfluencedReactionProcess(reaction1) {
+       VariableReferenceList [\_ Variable:/Surface:VACANT -1] [\_Variable:/:MinDatp -1] [\_ Variable:/Surface:MinD 1];
+       k 2.2e-8; } # m/s
+     Process DiffusionInfluencedReactionProcess(reaction2) {
+       VariableReferenceList [\_ Variable:/Surface:MinD -1] [\_Variable:/:MinDatp -1] [\_ Variable:/Surface:MinD 1]
+                             [\_ Variable:/Surface:MinD 1];
+       k 3e-20; } # m^3/s
+     Process DiffusionInfluencedReactionProcess(reaction3) {
+       VariableReferenceList [\_ Variable:/Surface:MinD -1] [\_Variable:/:MinEE -1] [\_ Variable:/Surface:MinDEE 1];
+       k 5e-19; } # m^3/s
+     Process SpatiocyteNextReactionProcess(reaction4) {
+       VariableReferenceList [\_ Variable:/Surface:MinDEE -1] [\_Variable:/Surface:MinEE 1] [\_ Variable:/:MinDadp 1];
+       k 1; } # s^{-1}
+     Process SpatiocyteNextReactionProcess(reaction5) {
+       VariableReferenceList [\_ Variable:/:MinDadp -1] [\_Variable:/:MinDatp 1];
+       k 5; } # s^{-1}
+     Process DiffusionInfluencedReactionProcess(reaction6) {
+       VariableReferenceList [\_ Variable:/Surface:MinDEE -1] [\_Variable:/Surface:MinD -1] [\_ Variable:/Surface:MinDEED 1];
+       k 5e-15; } # m^2/s
+     Process SpatiocyteNextReactionProcess(reaction7) {
+       VariableReferenceList [\_ Variable:/Surface:MinDEED -1] [\_Variable:/Surface:MinDEE 1] [\_ Variable:/:MinDadp 1];
+       k 1; } # s^{-1}
+     Process SpatiocyteNextReactionProcess(reaction8) {
+       VariableReferenceList [\_ Variable:/Surface:MinEE -1] [\_Variable:/:MinEE 1];
+       k 0.83; } # s^{-1}
+   }
   
  
 
