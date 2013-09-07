@@ -3,8 +3,7 @@ A guide to modeling reaction-diffusion of molecules with the E-Cell System
 
 | Satya N. V. Arjunan
 | satya@riken.jp
-| RIKEN Quantitative Biology Center, Furuedai, Suita, Osaka 565-0874,
-Japan
+| RIKEN Quantitative Biology Center, Furuedai, Suita, Osaka 565-0874, Japan
 
 Abstract
 ---------
