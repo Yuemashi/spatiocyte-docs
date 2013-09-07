@@ -7,6 +7,7 @@ A guide to modeling reaction-diffusion of molecules with the E-Cell System
 Japan
 
 Abstract
+---------
 
 The E-Cell System is an advanced platform intended for mathematical
 modeling and simulation of well-stirred biochemical systems. We have
@@ -24,7 +25,7 @@ Keywords: spatial modeling, stochastic simulation, diffusion, membrane,
 multicompartment, intercompartment, Spatiocyte
 
 Introduction
-============
+-------------
 
 The E-Cell System version 3 can model and simulate both deterministic
 and stochastic biochemical processes (Takakashi et al., 2004). Simulated
