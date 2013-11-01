@@ -6,15 +6,17 @@ the GNU General Public License and is available at GitHub. At the time
 of writing, the Spatiocyte modules of the E-Cell System have been tested
 to run on Linux systems. Spatiocyte does not yet support other operating
 systems. Here we describe the installation procedures on a Ubuntu Linux
-system.
+system and Mac OSX.
 
+Ubuntu Linux
+------------
  
 
 On a freshly installed Ubuntu Linux, Spatiocyte (and E-Cell System version3) require several additional packages:
 
 ::
 
-  $ sudo apt-get install git autoconf automake libtool g++ libgsl0-dev python-numpy python-ply libboost-python-dev libgtkmm-2.4-dev libgtkglextmm-x11-1.2-dev libhdf5-serial-dev valgrind
+  $ sudo apt-get install git gfortran libgfortran-4.7-dev autoconf automake libtool g++ libgsl0-dev python-numpy python-ply libboost-python-dev libgtkmm-2.4-dev libgtkglextmm-x11-1.2-dev libhdf5-serial-dev valgrind
 
 
 The general installation procedure of the Spatiocyte is as follows:
@@ -88,7 +90,8 @@ E-Cell System:
 
 ::
 
-  $ ecell3-session -f 2010.arjunan.syst.synth.biol.wt.em
+  $ ecell3-em2eml samples/2010.arjunan.syst.synth.biol/2010.arjunan.syst.synth.biol.wt.em
+  $ ecell3-session -f 2010.arjunan.syst.synth.biol.wt.eml
   <2010.arjunan.syst.synth.biol.wt.eml, t=0>>> run(90)
   <2010.arjunan.syst.synth.biol.wt.eml, t=90>>> exit()
   # Models that are created using the Python script can be run as,
@@ -240,5 +243,38 @@ file is available in the Spatiocyte source package as
 Figure 3: The SpatiocyteVisualizer displaying simulated membrane-bound
 proteins of the MinDE model.
 
+Mac OSX
+-------
 
+On Mac OSX, Spatiocyte (and E-Cell System version3) require XQuartz and several additional packages, We recommend using homebrew to manage packages:
 
+- install XQuartz from http://xquartz.macosforge.org/landing/ and restart Mac OSX
+
+::
+  $ ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+  $ brew install wget automake autoconf libtool gsl pygtk boost
+  $ brew install gfortran --build-from-source
+  $ brew install homebrew/science/hdf5 --enable-cxx
+  $ wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py
+  $ sudo python ez_setup.py
+  $ wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py
+  $ sudo python get-pip.py
+  $ sudo pip install ply
+  $ git clone git://github.com/ecell/spatiocyte
+  $ PYTHONPATH=/usr/local/lib/python2.7/site-packages LDFLAGS="-L/usr/local/Cellar/gfortran/4.8.2/gfortran/lib" ./configure --prefix=$HOME/root --disable-visualizer
+  $ make
+  $ make install
+
+To start ecell3-sesion or ecell3-session-monitor, run following commands
+
+  $ $HOME/root/bin/ecell3-session
+  $ PYTHONPATH=$HOME/root/lib/python2.7/site-packages:/usr/local/lib/python2.7/site-packages $HOME/root/bin/ecell3-session-monitor
+
+To run a sample for Spatiocyte, run following commands
+
+  $ $HOME/root/bin/ecell3-em2eml samples/2010.arjunan.syst.synth.biol/2010.arjunan.syst.synth.biol.wt.em
+  $ $HOME/root/bin/ecell3-session -f 2010.arjunan.syst.synth.biol.wt.eml
+
+and run function with argument (in this case 10) like this
+
+  <2010.arjunan.syst.synth.biol.wt.eml, t=0>>> run(10)
