@@ -251,6 +251,7 @@ On Mac OSX, Spatiocyte (and E-Cell System version3) require XQuartz and several 
 - install XQuartz from http://xquartz.macosforge.org/landing/ and restart Mac OSX
 
 ::
+
   $ ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
   $ brew install wget automake autoconf libtool gsl pygtk boost
   $ brew install gfortran --build-from-source
@@ -267,14 +268,20 @@ On Mac OSX, Spatiocyte (and E-Cell System version3) require XQuartz and several 
 
 To start ecell3-sesion or ecell3-session-monitor, run following commands
 
+::
+
   $ $HOME/root/bin/ecell3-session
   $ PYTHONPATH=$HOME/root/lib/python2.7/site-packages:/usr/local/lib/python2.7/site-packages $HOME/root/bin/ecell3-session-monitor
 
 To run a sample for Spatiocyte, run following commands
 
+::
+
   $ $HOME/root/bin/ecell3-em2eml samples/2010.arjunan.syst.synth.biol/2010.arjunan.syst.synth.biol.wt.em
   $ $HOME/root/bin/ecell3-session -f 2010.arjunan.syst.synth.biol.wt.eml
 
 and run function with argument (in this case 10) like this
+
+::
 
   <2010.arjunan.syst.synth.biol.wt.eml, t=0>>> run(10)
