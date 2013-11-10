@@ -262,6 +262,8 @@ On Mac OSX, Spatiocyte (and E-Cell System version3) require XQuartz and several 
   $ sudo python get-pip.py
   $ sudo pip install ply
   $ git clone git://github.com/ecell/spatiocyte
+  $ cd spatiocyte
+  $ sh autogen.sh
   $ PYTHONPATH=/usr/local/lib/python2.7/site-packages LDFLAGS="-L/usr/local/Cellar/gfortran/4.8.2/gfortran/lib" ./configure --prefix=$HOME/root --disable-visualizer
   $ make
   $ make install
