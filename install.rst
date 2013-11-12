@@ -268,21 +268,26 @@ On Mac OSX, Spatiocyte (and E-Cell System version3) require XQuartz and several 
   $ make
   $ make install
 
-To start ecell3-sesion or ecell3-session-monitor, run following commands
+To start ecell3-sesion, run following command from your shell
 
 ::
 
   $ $HOME/root/bin/ecell3-session
+
+To start ecell3-session-monitor, run following command from your shell
+
+::
+
   $ PYTHONPATH=$HOME/root/lib/python2.7/site-packages:/usr/local/lib/python2.7/site-packages $HOME/root/bin/ecell3-session-monitor
 
-To run a sample for Spatiocyte, run following commands
+To run a sample for Spatiocyte, run following commands from your shell
 
 ::
 
   $ $HOME/root/bin/ecell3-em2eml samples/2010.arjunan.syst.synth.biol/2010.arjunan.syst.synth.biol.wt.em
   $ $HOME/root/bin/ecell3-session -f 2010.arjunan.syst.synth.biol.wt.eml
 
-and run function with argument (in this case 10) like this
+If you succeed in Spatiocyte session, run following function with argument (in this case 10) from ecell session(, not from your shell).
 
 ::
 
