@@ -4,9 +4,9 @@ Installing and Running Spatiocyte
 The Spatiocyte source code is distributed as open source software under
 the GNU General Public License and is available at GitHub. At the time
 of writing, the Spatiocyte modules of the E-Cell System have been tested
-to run on Linux systems. Spatiocyte does not yet support other operating
-systems. Here we describe the installation procedures on a Ubuntu Linux
-system and Mac OSX.
+to run on Linux and Mac OSX systems. However, on Mac OSX the particle 
+visualizer is not supported. Here, we describe the installation 
+procedures on a Ubuntu Linux system and followed by the Mac OSX system.
 
 Ubuntu Linux
 ------------
