@@ -254,8 +254,8 @@ On Mac OSX, Spatiocyte (and E-Cell System version3) require XQuartz and several 
 
 ::
 
-  $ ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
-  $ brew install wget automake autoconf libtool gsl pygtk boost gfortran
+  $ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+  $ brew install wget automake autoconf libtool gsl pygtk boost gcc
   $ brew install homebrew/science/hdf5 --enable-cxx
   $ wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py
   $ sudo python ez_setup.py
