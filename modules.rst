@@ -1024,7 +1024,7 @@ saved images is to use the ffmpeg program:
 
 ::
 
-  $ ffmpeg -i image%07d.png -sameq out.mp4
+  $ avconv -i image%07d.png -vcodec qtrle out.mov
 
 Table 3: SpatiocyteVisualizer features and keyboard shortcuts
 
