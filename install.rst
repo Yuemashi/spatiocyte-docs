@@ -154,7 +154,9 @@ Figure 1: The E-Cell Session Monitor
 .. code-block:: none
    :linenos:
 
-    Stepper SpatiocyteStepper(SS) { VoxelRadius 1e-8; } # m
+    Stepper SpatiocyteStepper(SS) {
+      VoxelRadius 1e-8; # m
+      SearchVacant 1; }
     System System(/) {
       StepperID SS;
       Variable Variable(GEOMETRY) { Value 3; } # rod shaped compartment
@@ -259,8 +261,6 @@ Figure 1: The E-Cell Session Monitor
                               [_ Variable:/:MinEE 1];
         k 0.83; } # s^{-1}
     }
-  
- 
 
 Figure 2: E-Cell Model (EM) description file for the MinDE model. The
 file is available in the Spatiocyte source package as
