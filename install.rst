@@ -13,11 +13,11 @@ Ubuntu Linux
 ------------
  
 
-On a freshly installed Ubuntu Linux, Spatiocyte (and E-Cell System version3) require several additional packages:
+On a freshly installed Ubuntu Linux, Spatiocyte requires several additional packages. We can install them with the following instruction:
 
 ::
 
-  $ sudo apt-get install git autoconf automake libtool g++ libgsl0-dev python-numpy python-ply python-gtk2 libboost-python-dev libgtkmm-2.4-dev libgtkglextmm-x11-1.2-dev libhdf5-serial-dev libav-tools blender vlc python-matplotlib
+  $ sudo apt-get install git autoconf automake libtool g++ libgsl0-dev python-numpy python-ply python-gtk2 libboost-python-dev libgtkmm-2.4-dev libgtkglextmm-x11-1.2-dev libhdf5-serial-dev libav-tools blender vlc python-numpy python-scipy python-matplotlib
 
 
 The general installation procedure of the Spatiocyte is as follows:
