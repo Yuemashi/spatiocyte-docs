@@ -17,7 +17,7 @@ On a freshly installed Ubuntu Linux, Spatiocyte (and E-Cell System version3) req
 
 ::
 
-  $ sudo apt-get install git gfortran libgfortran-4.7-dev autoconf automake libtool g++ libgsl0-dev python-numpy python-ply python-gtk2 libboost-python-dev libgtkmm-2.4-dev libgtkglextmm-x11-1.2-dev libhdf5-serial-dev valgrind
+  $ sudo apt-get install git autoconf automake libtool g++ libgsl0-dev python-numpy python-ply python-gtk2 libboost-python-dev libgtkmm-2.4-dev libgtkglextmm-x11-1.2-dev libhdf5-serial-dev libav-tools blender vlc python-matplotlib
 
 
 The general installation procedure of the Spatiocyte is as follows:
