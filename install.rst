@@ -20,7 +20,7 @@ On a freshly installed Ubuntu Linux, Spatiocyte requires several additional pack
   $ sudo apt-get install git autoconf automake libtool g++ libgsl0-dev python-numpy python-ply python-gtk2 libboost-python-dev libgtkmm-2.4-dev libgtkglextmm-x11-1.2-dev libhdf5-serial-dev libav-tools blender vlc python-numpy python-scipy python-matplotlib
 
 
-The general installation procedure of the Spatiocyte is as follows:
+The general installation procedure of Spatiocyte is as follows:
 
 ::
 
@@ -31,9 +31,9 @@ The general installation procedure of the Spatiocyte is as follows:
   $ cd spatiocyte
   $ ./autogen.sh
   $ ./configure --prefix=$HOME/root
-  $ make -j3 (or just make, if there is only one CPU core available)
-  $ make install (files will be installed in the $HOME/root directory)
-  $ gedit ~/.bashrc (other editors such as emacs or vim can also be used here)
+  $ make -j3 *(or just make, if there is only one CPU core available)*
+  $ make install *(files will be installed in the $HOME/root directory)*
+  $ gedit ~/.bashrc *(other editors such as emacs or vim can also be used here)*
 
 The following lines, which specify the environment variables of the
 E-Cell System should be appended to the .bashrc file:
