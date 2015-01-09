@@ -51,16 +51,17 @@ environment variables:
 ::
 
   $ source ~/.bashrc
-  $ ecell3-session-monitor (try opening it, the window shown in Figure 1 should appear, and then close it)
+  $ ecell3-session-monitor
  
-
-We can now attempt to run a simple 1D diffusion model in the E-Cell Model (EM)
-language, simple.em:
+The window shown in Figure 1 should appear. Congratulations! You have now 
+sucessfully installed Spatiocyte. We can now attempt to run a simple 1D 
+diffusion model in written in python, 1D.py:
 
 ::
 
   $ cd $HOME/wrk/spatiocyte/examples/1D
   $ ecell3-session 1D.py
+  $ spatiocyte
 
 The Spatiocyte package includes the MinDE model (see Figure 2)
 reported in (Arjunan and Tomita, 2010). We can now attempt to run the
@@ -128,8 +129,7 @@ get some debugging information using the Valgrind tool:
 
 ::
 
-  $ valgrind --tool=memcheck --num-callers=40 --leak-check=full python
-  $ HOME/root/bin/ecell3-session -f modelFileName.eml
+  $ valgrind --tool=memcheck --num-callers=40 --leak-check=full python $HOME/root/bin/ecell3-session -f modelFileName.eml
 
 
 .. image:: https://raw.github.com/ecell/spatiocyte-docs/master/images/image12.png
