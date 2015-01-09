@@ -1,5 +1,5 @@
-A guide to modeling reaction-diffusion of molecules with the E-Cell System
-==========================================================================
+A guide to modeling reaction-diffusion of molecules with Spatiocyte
+===================================================================
 
 | Satya N. V. Arjunan
 | satya@riken.jp

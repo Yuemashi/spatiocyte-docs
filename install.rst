@@ -55,7 +55,7 @@ environment variables:
  
 The window shown in Figure 1 should appear. Congratulations! You have now 
 sucessfully installed Spatiocyte. We can now attempt to run a simple 1D 
-diffusion model in written in python, 1D.py:
+diffusion model in written in Python, 1D.py:
 
 ::
 
