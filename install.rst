@@ -17,7 +17,7 @@ On a freshly installed Ubuntu Linux, Spatiocyte requires several additional pack
 
 ::
 
-  $ sudo apt-get install git autoconf automake libtool g++ libgsl0-dev python-numpy python-ply python-gtk2 libboost-python-dev libgtkmm-2.4-dev libgtkglextmm-x11-1.2-dev libhdf5-serial-dev libav-tools blender vlc python-numpy python-scipy python-matplotlib
+  $ sudo apt-get install git autoconf automake libtool g++ libgsl0-dev python-numpy python-ply python-gtk2 libboost-python-dev libgtkmm-2.4-dev libgtkglextmm-x11-1.2-dev libhdf5-serial-dev libav-tools blender vlc python-numpy python-scipy python-matplotlib valgrind
 
 
 The general installation procedure of Spatiocyte is as follows:
@@ -31,9 +31,9 @@ The general installation procedure of Spatiocyte is as follows:
   $ cd spatiocyte
   $ ./autogen.sh
   $ ./configure --prefix=$HOME/root
-  $ make -j3 *(or just make, if there is only one CPU core available)*
-  $ make install *(files will be installed in the $HOME/root directory)*
-  $ gedit ~/.bashrc *(other editors such as emacs or vim can also be used here)*
+  $ make -j4 
+  $ make install
+  $ gedit ~/.bashrc
 
 The following lines, which specify the environment variables of the
 E-Cell System should be appended to the .bashrc file:
@@ -54,23 +54,13 @@ environment variables:
   $ ecell3-session-monitor (try opening it, the window shown in Figure 1 should appear, and then close it)
  
 
-We can now attempt to run a simple model in the E-Cell Model (EM)
+We can now attempt to run a simple 1D diffusion model in the E-Cell Model (EM)
 language, simple.em:
 
 ::
 
-  $ cd $HOME/wrk/spatiocyte/samples/simple/
-  $ ecell3-em2eml simple.em
-  $ ecell3-session-monitor
- 
-
-Using ecell3-em2eml, the model file simple.em was converted into
-simple.eml in Extensible Markup Language (XML) format. The simple.eml
-file can now be loaded from the File menu of the E-Cell Session Monitor
-or the File open button (see Figure 1). Try running the simulation by
-clicking on the Start button.
-
- 
+  $ cd $HOME/wrk/spatiocyte/examples/1D
+  $ ecell3-session 1D.py
 
 The Spatiocyte package includes the MinDE model (see Figure 2)
 reported in (Arjunan and Tomita, 2010). We can now attempt to run the
@@ -78,30 +68,27 @@ model with the following steps:
 
 ::
 
-  $ cd $HOME/wrk/spatiocyte/samples/2010.arjunan.syst.synth.biol/
+  $ cd $HOME/wrk/spatiocyte/examples/published/2010.arjunan.syst.synth.biol
   $ ecell3-em2eml 2010.arjunan.syst.synth.biol.wt.em
   $ ecell3-session-monitor
  
 
 Load the model 2010.arjunan.syst.synth.biol.wt.eml and try running the
-simulation for 90 seconds.
+simulation for 180 seconds.
 
 We can also run Spatioctye models using command line interface of the
 E-Cell System:
 
 ::
 
-  $ ecell3-em2eml samples/2010.arjunan.syst.synth.biol/2010.arjunan.syst.synth.biol.wt.em
+  $ ecell3-em2eml 2010.arjunan.syst.synth.biol.wt.em
   $ ecell3-session -f 2010.arjunan.syst.synth.biol.wt.eml
-  <2010.arjunan.syst.synth.biol.wt.eml, t=0>>> run(90)
-  <2010.arjunan.syst.synth.biol.wt.eml, t=90>>> exit()
-  # Models that are created using the Python script can be run as,
-  $ ecell3-session 2012.arjunan.chapter.neuron.py
-
+  <2010.arjunan.syst.synth.biol.wt.eml, t=0>>> run(180)
+  <2010.arjunan.syst.synth.biol.wt.eml, t=180>>> exit()
 
 When running a Spatiocyte model with the VisualizationLogProcess module
 enabled, the three-dimensional positional information of a logged
-molecule species will be stored in visualLog0.dat (default file name).
+molecule species will be stored in VisualLog.dat (default file name).
 The molecules can be viewed in a separate visualizer window even while
 the simulation is still running. To view them, we can run
 SpatiocyteVisualizer by issuing
@@ -111,7 +98,7 @@ SpatiocyteVisualizer by issuing
   $ spatiocyte
 
 
-The visualizer will load the visualLog0.dat file by default and display
+The visualizer will load the VisualLog.dat file by default and display
 the molecules at every log interval (see Figure 3). The keyboard
 shortcuts that are available for the visualizer are listed in the
 SpatiocyteVisualizer module section.
