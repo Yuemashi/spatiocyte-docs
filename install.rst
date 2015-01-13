@@ -250,8 +250,8 @@ Figure 1: The E-Cell Session Monitor
     }
 
 Figure 2: E-Cell Model (EM) description file for the MinDE model. The
-file is available in the Spatiocyte source package as
-2010.arjunan.syst.synth.biol.wt.em.
+file is available in the Spatiocyte source package in the examples directory
+as 2010.arjunan.syst.synth.biol.wt.em.
 
 .. image:: https://raw.github.com/ecell/spatiocyte-docs/master/images/image13.png
 
@@ -298,11 +298,11 @@ To start ecell3-session-monitor, run following command from your shell
 
   $ PYTHONPATH=$HOME/root/lib/python2.7/site-packages:/usr/local/lib/python2.7/site-packages $HOME/root/bin/ecell3-session-monitor
 
-To run a sample for Spatiocyte, run following commands from your shell
+To run an example model with Spatiocyte, run following commands from your shell
 
 ::
 
-  $ $HOME/root/bin/ecell3-em2eml samples/2010.arjunan.syst.synth.biol/2010.arjunan.syst.synth.biol.wt.em
+  $ $HOME/root/bin/ecell3-em2eml examples/published/2010.arjunan.syst.synth.biol/2010.arjunan.syst.synth.biol.wt.em
   $ $HOME/root/bin/ecell3-session -f 2010.arjunan.syst.synth.biol.wt.eml
 
 If you succeed in Spatiocyte session, run following function with argument (in this case 10) from ecell session(, not from your shell).
