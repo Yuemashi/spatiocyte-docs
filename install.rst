@@ -1,61 +1,46 @@
 Installing and Running Spatiocyte
 =================================
 
-The Spatiocyte source code is distributed as open source software under
+The Spatiocyte source code is distributed as open-source software under
 the GNU General Public License and is available at GitHub. At the time
-of writing, the Spatiocyte modules of the E-Cell System have been tested
-to run on Linux and Mac OSX systems. However, on Mac OSX the particle 
-visualizer is not supported. Here, we first describe the installation 
-procedures on a Ubuntu Linux system. The next section gives the procedures
-for a Mac OSX system.
+of writing, the Spatiocyte has been tested to run on Linux and Mac OS X systems. 
 
 Ubuntu Linux
 ------------
- 
 
-On a freshly installed Ubuntu Linux, Spatiocyte requires several additional packages. We can install them with the following instruction:
-
-::
-
-  $ sudo apt-get install git autoconf automake libtool g++ libgsl0-dev python-numpy python-ply python-gtk2 libboost-python-dev libgtkmm-2.4-dev libgtkglextmm-x11-1.2-dev libhdf5-serial-dev libav-tools blender vlc python-numpy python-scipy python-matplotlib valgrind
-
-
-The general installation procedure of Spatiocyte is as follows:
+Spatiocyte has been tested to run well on Ubuntu Linux. On a freshly installed Ubuntu, Spatiocyte requires several additional packages. To install these packages and Spatiocyte, open a terminal and execute the following instructions:
 
 ::
 
-  $ cd
-  $ mkdir wrk
-  $ cd wrk
-  $ git clone git://github.com/ecell/spatiocyte
-  $ cd spatiocyte
-  $ ./autogen.sh
-  $ ./configure --prefix=$HOME/root
-  $ make -j4 
-  $ make install
-  $ gedit ~/.bashrc
+  $ wget https://raw.githubusercontent.com/ecell/spatiocyte/master/install-spatiocyte-ubuntu.sh
+  $ sh -x install-spatiocyte-ubuntu.h
 
-The following lines, which specify the environment variables of the
-E-Cell System should be appended to the .bashrc file:
+
+Mac OSX
+-------
+
+Spatiocyte has been tested to run on the Yosemite Mac OS X system. Spatiocyte requires XQuartz and several additional packages. We recommend using homebrew to manage packages. To install these packages and Spatiocyte, open a terminal and peform the following instructions:
 
 ::
 
-  export PATH=$HOME/root/bin:$PATH
-  export LD_LIBRARY_PATH=$HOME/root/lib:$LD_LIBRARY_PATH
-  export PYTHONPATH=$HOME/root/lib/python2.7/site-packages:$PYTHONPATH
+  $ curl https://raw.githubusercontent.com/ecell/spatiocyte/master/install-spatiocyte-mac.sh
+  $ sh -x install-spatiocyte-mac.h
 
-In the line 3 above, the Python version number '2.7' should be updated
-if it is different in the installed system. Next, we load the new
-environment variables:
+Since Spatiocyte also requires the Blender software for rendering and the VLC software to view simulation movies, you can download and install them separately. Blender can be downloaded from http://www.blender.org/, while VLC from http://www.videolan.org/.
+
+Testing the installation and running a simple model
+---------------------------------------------------
+
+The above instructions will retrive and execute the Spatiocyte installation script. The script will download all the packages required by Spatiocyte and install the software. Enter your password when requested since some packages require the administrator privilege. If you have any issues during install please post error messages during install to the Spatiocyte users forum at https://groups.google.com/forum/?hl=en#!forum/spatiocyte-users
+  
+Close and reopen the terminal for the installation to take effect. To test if the installation is successful, run the following command in the terminal:
 
 ::
 
-  $ source ~/.bashrc
   $ ecell3-session-monitor
- 
+
 The window shown in Figure 1 should appear. Congratulations! You have now 
-sucessfully installed Spatiocyte. We can now attempt to run a simple 1D 
-diffusion model written in Python, 1D.py:
+sucessfully installed Spatiocyte. Next, we can try running a simple 1D diffusion model written in Python, 1D.py: 
 
 ::
 
@@ -63,8 +48,8 @@ diffusion model written in Python, 1D.py:
   $ ecell3-session 1D.py
   $ spatiocyte
 
-The Spatiocyte package includes the MinDE model (see Figure 2)
-reported in (Arjunan and Tomita, 2010). We can now attempt to run the
+The Spatiocyte package includes the MinDE model (see Figure 2) as
+reported by Arjunan and Tomita, 2010. We can now attempt to run the
 model with the following steps:
 
 ::
@@ -102,7 +87,7 @@ SpatiocyteVisualizer by issuing
 The visualizer will load the VisualLog.dat file by default and display
 the molecules at every log interval (see Figure 3). The keyboard
 shortcuts that are available for the visualizer are listed in the
-SpatiocyteVisualizer module section.
+SpatiocyteVisualizer module section. There are many example models available in the examples directory. Instructions to run each model are given in the respective README file.
 
 To update the local Spatiocyte code to the latest source, under the
 ecell3-spatiocyte directory, issue the following:
@@ -111,7 +96,7 @@ ecell3-spatiocyte directory, issue the following:
 
   $ git pull
   $ make clean
-  $ make -j3
+  $ make -j4
 
 
 To checkout a specific committed version of the source:
@@ -124,12 +109,6 @@ To checkout a specific committed version of the source:
 The 10 digit hex commit codes are available at
 `https://github.com/ecell/spatiocyte/commits/master/ <https://github.com/ecell/ecell3-spatiocyte/commits/master/>`__
 
-If the program fails and crashes when loading or running a model, we can
-get some debugging information using the Valgrind tool:
-
-::
-
-  $ valgrind --tool=memcheck --num-callers=40 --leak-check=full python $HOME/root/bin/ecell3-session -f modelFileName.eml
 
 
 .. image:: https://raw.github.com/ecell/spatiocyte-docs/master/images/image12.png
@@ -255,58 +234,6 @@ as 2010.arjunan.syst.synth.biol.wt.em.
 
 .. image:: https://raw.github.com/ecell/spatiocyte-docs/master/images/image13.png
 
- 
 
 Figure 3: The SpatiocyteVisualizer displaying simulated membrane-bound
 proteins of the MinDE model.
-
-Mac OSX
--------
-
-On Mac OSX, Spatiocyte (and E-Cell System version3) require XQuartz and several additional packages, We recommend using homebrew to manage packages:
-
-- First you need to install XQuartz from http://xquartz.macosforge.org/landing/ and restart Mac OSX
-- Next you need to install some dependencies with following commands
-
-::
-
-  $ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
-  $ brew install wget automake autoconf libtool gsl pygtk gcc
-  $ brew install boost --with-python
-  $ brew install homebrew/science/hdf5 --enable-cxx
-  $ wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py
-  $ sudo python ez_setup.py
-  $ wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py
-  $ sudo python get-pip.py
-  $ sudo pip install ply
-  $ git clone git://github.com/ecell/spatiocyte
-  $ cd spatiocyte
-  $ sh autogen.sh
-  $ PYTHONPATH=/usr/local/lib/python2.7/site-packages LDFLAGS="-L/usr/local/Cellar/gfortran/4.8.2/gfortran/lib" ./configure --prefix=$HOME/root --disable-visualizer
-  $ make
-  $ make install
-
-To start ecell3-sesion, run following command from your shell
-
-::
-
-  $ $HOME/root/bin/ecell3-session
-
-To start ecell3-session-monitor, run following command from your shell
-
-::
-
-  $ PYTHONPATH=$HOME/root/lib/python2.7/site-packages:/usr/local/lib/python2.7/site-packages $HOME/root/bin/ecell3-session-monitor
-
-To run an example model with Spatiocyte, run following commands from your shell
-
-::
-
-  $ $HOME/root/bin/ecell3-em2eml examples/published/2010.arjunan.syst.synth.biol/2010.arjunan.syst.synth.biol.wt.em
-  $ $HOME/root/bin/ecell3-session -f 2010.arjunan.syst.synth.biol.wt.eml
-
-If you succeed in Spatiocyte session, run following function with argument (in this case 10) from ecell session(, not from your shell).
-
-::
-
-  <2010.arjunan.syst.synth.biol.wt.eml, t=0>>> run(10)
