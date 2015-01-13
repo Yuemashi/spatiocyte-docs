@@ -26,12 +26,12 @@ Spatiocyte has been tested to run on the Yosemite Mac OS X system. Spatiocyte re
   $ curl https://raw.githubusercontent.com/ecell/spatiocyte/master/install-spatiocyte-mac.sh
   $ sh -x install-spatiocyte-mac.h
 
-Since Spatiocyte also requires the Blender software for rendering and the VLC software to view simulation movies, you can download and install them separately. Blender can be downloaded from http://www.blender.org/, while VLC from http://www.videolan.org/.
+The installation script will take sometime to finish executing on the Mac. Since Spatiocyte also requires the Blender software for rendering and the VLC software to view simulation movies, you can download and install them separately. Blender can be downloaded from http://www.blender.org/, while VLC from http://www.videolan.org/.
 
-Testing the installation and running a simple model
----------------------------------------------------
+Testing the installation and running a model
+--------------------------------------------
 
-The above instructions will retrive and execute the Spatiocyte installation script. The script will download all the packages required by Spatiocyte and install the software. Enter your password when requested since some packages require the administrator privilege. If you have any issues during install please post error messages during install to the Spatiocyte users forum at https://groups.google.com/forum/?hl=en#!forum/spatiocyte-users
+The above instructions will retrive and execute the Spatiocyte installation script. The script will download all packages required by Spatiocyte and install the software. Enter your password when requested since some packages require the administrator privilege. If you have any issues during install please post error messages during install to the Spatiocyte users forum at https://groups.google.com/forum/?hl=en#!forum/spatiocyte-users
   
 Close and reopen the terminal for the installation to take effect. To test if the installation is successful, run the following command in the terminal:
 
