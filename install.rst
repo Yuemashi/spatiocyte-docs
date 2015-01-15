@@ -16,8 +16,8 @@ Spatiocyte has been tested to run well on Ubuntu Linux. On a freshly installed U
   $ sh -x install-spatiocyte-ubuntu.h
 
 
-Mac OSX
--------
+Mac OS X
+--------
 
 Spatiocyte has been tested to run on the Yosemite Mac OS X system. Spatiocyte requires XQuartz and several additional packages. We recommend using homebrew to manage packages. To install these packages and Spatiocyte, open a terminal and peform the following instructions:
 
