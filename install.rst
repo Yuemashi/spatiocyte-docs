@@ -23,7 +23,7 @@ Spatiocyte has been tested to run on the Yosemite Mac OS X system. Spatiocyte re
 
 ::
 
-  $ curl https://raw.githubusercontent.com/ecell/spatiocyte/master/install-spatiocyte-mac.sh
+  $ curl -O https://raw.githubusercontent.com/ecell/spatiocyte/master/install-spatiocyte-mac.sh
   $ sh -x install-spatiocyte-mac.h
 
 Since Spatiocyte also requires the Blender software for rendering and the VLC software to view simulation movies, you can download and install them separately. Blender can be downloaded from http://www.blender.org/, while VLC from http://www.videolan.org/.
