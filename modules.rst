@@ -1042,9 +1042,9 @@ Table 3: SpatiocyteVisualizer features and keyboard shortcuts
 +--------------------------------+--------------------------------+
 |Pause/Play                      |Space                           |
 +--------------------------------+--------------------------------+
-|Zoom In                         |Ctrl++ or Ctrl+= or PageUp      |
+|Zoom In                         |f or Ctrl++ or Ctrl+= or PageUp |
 +--------------------------------+--------------------------------+
-|Zoom Out                        |Ctrl+- or PageDown              |
+|Zoom Out                        |b or Ctrl+- or PageDown         |
 +--------------------------------+--------------------------------+
 |Reset View                      |Ctrl+0 or Home                  |
 +--------------------------------+--------------------------------+
@@ -1070,6 +1070,10 @@ Table 3: SpatiocyteVisualizer features and keyboard shortcuts
 |Translate Right                 |Shift+Right Arrow               |
 +--------------------------------+--------------------------------+
 |Translate Left                  |Shift+Left Arrow                |
++--------------------------------+--------------------------------+
+|Translate Front                 |F
++--------------------------------+--------------------------------+
+|Translate Back                  |B
 +--------------------------------+--------------------------------+
 |Save current frame as a PNG     |s                               |
 |image                           |                                |
