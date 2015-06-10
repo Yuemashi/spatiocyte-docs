@@ -1071,9 +1071,9 @@ Table 3: SpatiocyteVisualizer features and keyboard shortcuts
 +--------------------------------+--------------------------------+
 |Translate Left                  |Shift+Left Arrow                |
 +--------------------------------+--------------------------------+
-|Translate Front                 |F
+|Translate Front                 |F                               |
 +--------------------------------+--------------------------------+
-|Translate Back                  |B
+|Translate Back                  |B                               |
 +--------------------------------+--------------------------------+
 |Save current frame as a PNG     |s                               |
 |image                           |                                |
