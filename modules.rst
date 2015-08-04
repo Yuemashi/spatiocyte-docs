@@ -585,11 +585,11 @@ Figure 12.
    populator = theSimulator.createEntity('MoleculePopulateProcess', 'Process:/:populateLeft')
    populator.VariableReferenceList = [['\_', 'Variable:/Surface:A']]
    populator.OriginX = -1
-   populator.UniformRadiusX = 0.5
+   populator.UniformLengthX = 0.5
    populator = theSimulator.createEntity('MoleculePopulateProcess', 'Process:/:populateRight')
    populator.VariableReferenceList = [['\_', 'Variable:/Surface:B']]
    populator.OriginX = 1
-   populator.UniformRadiusX = 0.5
+   populator.UniformLengthX = 0.5
    # Create the surface compartment:
    theSimulator.createEntity('System', 'System:/:Surface').StepperID = 'SS'
    theSimulator.createEntity('Variable', 'Variable:/Surface:DIMENSION').Value = 2
@@ -644,12 +644,12 @@ GaussianSigma[X, Y, Z]
 GaussianSigma[X, Y, Z] stipulates the sigma value for a Gaussian
 distributed population from the origin in [x, y, z]-axis, respectively.
 
-UniformRadius[X, Y, Z]
+UniformLength[X, Y, Z]
 ~~~~~~~~~~~~~~~~~~~~~~
 
 The uniformly distributed normalized population radius from the origin
-point in [x, y, z]-axis is given by the UniformRadius[X, Y, Z]
-parameter. Since the default values of UniformRadius[X, Y, Z] and
+point in [x, y, z]-axis is given by the UniformLength[X, Y, Z]
+parameter. Since the default values of UniformLength[X, Y, Z] and
 Origin[X, Y, Z] are [1, 1, 1] and [0, 0, 0], respectively, the molecules
 are spread uniformly within the entire compartment when the parameters
 are not defined.
